@@ -54,9 +54,9 @@ The steps below show how to quickly create and setup a new Chris plugin app proj
     git push origin master
 
 
-9. Create a new automated build and repository on https://hub.docker.com. Once you log
-   in, click the Create button in the header and select Automated Build from the drop-
-   down menu. The website will walk you through setting up the automated build. Next, when
+9. Create a new automated build and repository on the ``fnndsc`` organization on https://hub.docker.com.
+   Once you log in, click the Create button in the header and select Automated Build from the
+   drop-down menu. The website will walk you through setting up the automated build. Next, when
    prompted for the GitHub repository that you’d like to use for the automated build select
    the repository that you just created.
 
