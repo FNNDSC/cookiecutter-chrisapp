@@ -31,10 +31,20 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     VERSION         = '{{ cookiecutter.app_version }}'
     LICENSE         = 'Opensource (MIT)'
 
+    # Fill out this with key-value output descriptive info (such as an output file path
+    # relative to the output dir) that you want to save to the output meta file when
+    # called with the --saveoutputmeta flag
+    OUTPUT_META_DICT = {}
+ 
     def define_parameters(self):
+        """
+        Define the CLI arguments accepted by this plugin app.
+        """
 
     def run(self, options):
-
+        """
+        Define the code to be run by this plugin app.
+        """
 
 
 # ENTRYPOINT
