@@ -60,6 +60,9 @@ The steps below show how to quickly create and setup a new Chris plugin app proj
    prompted for the GitHub repository that you’d like to use for the automated build select
    the repository that you just created.
 
+10. Modify requirements.txt, Dockerfile and Python code with the proper versions of
+    Python dependencies and libraries and push your changes to Github.
+
 
 
 
