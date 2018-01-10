@@ -45,7 +45,7 @@ The steps below show how to quickly create and setup a new Chris plugin app proj
 
 7. Add the URL for the remote Github repository where your local repository will be pushed::
 
-    git remote add origin remote_Github_repository_URL
+    git remote add origin remote_Github_repository_URL (eg. https://github.com/FNNDSC/pl-neuproseg.git)
     git remote -v
 
 
