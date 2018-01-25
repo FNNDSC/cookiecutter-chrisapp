@@ -1,1 +1,1 @@
-chrisapp==1.0.5
+chrisapp==1.0.6
