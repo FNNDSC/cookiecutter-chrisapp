@@ -93,7 +93,7 @@ The interactive script will ask you to choose between two types of ChRIS plugins
 
     The first plugin of a pipeline would always be a **fs** plugin and the rest would be a chain of **ds**
     plugins creating files in the same single feed that was created by the root **fs** plugin. **Most of the
-    time you will be creating a ds plugin when integrating your software application in ChRIS**
+    time you will be creating a ds plugin when integrating your software application in ChRIS**.
 
 
 4. Create a new repository on https://github.com/**your_github_username** with the same name as the app project
