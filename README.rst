@@ -80,18 +80,20 @@ The steps below show how to quickly create and setup a new ChRIS plugin app proj
 
 The app project name should be a valid python module name as described here https://www.python.org/dev/peps/pep-0008/#package-and-module-names.
 
-The interactive sript will ask you to choose between two types of ChRIS plugins.
+The interactive script will ask you to choose between two types of ChRIS plugins.
 
     i.  **fs** plugin app. This doesn't have an input directory as a positional argument
-        (does have an output directory though) and always creates a new feed. So **fs** plugins
-        are always the single root of a pipeline or tree of plugin executions.
+        (does have an output directory though) and always creates a new feed (data container) in the ChRIS system. So **fs** plugins
+        are always the single root of a pipeline or tree of plugin executions. They are a way to
+        add new data to the system that will then be processed by subsequent **ds** plugins.
     
     ii. **ds** plugin app. This has both input and output directories as positional arguments.
         It never generates a new feed. **ds** plugins can only be run after a **fs** plugin or
         another **ds** plugin as they require an input directory (which is the output of the previous plugin).
 
     The first plugin of a pipeline would always be a **fs** plugin and the rest would be a chain of **ds**
-    plugins creating files in the same single feed that was created by the root **fs** plugin.
+    plugins creating files in the same single feed that was created by the root **fs** plugin. **Most of the
+    time you will be creating a ds plugin when integrating your software application in ChRIS**
 
 
 4. Create a new repository on https://github.com/**your_github_username** with the same name as the app project
