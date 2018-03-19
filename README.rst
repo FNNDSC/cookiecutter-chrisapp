@@ -4,6 +4,7 @@ cookiecutter-chrisapp
 
 A cookiecutter template for ChRIS plugin apps.
 
+
 Abstract
 ========
 
@@ -146,7 +147,9 @@ The interactive script will ask you to choose between two types of ChRIS plugins
     Look at https://github.com/FNNDSC/pl-simplefsapp (a simple **fs** plugin) and https://github.com/FNNDSC/pl-simpledsapp (a simple **ds** plugin)
     for guidance on getting started with your ChRIS plugin!
 
+11. Once you've developed and properly tested your plugin app consult the wiki_ to learn how to register it to ChRIS and the ChRIS store.
 
+.. _wiki: https://github.com/FNNDSC/cookiecutter-chrisapp/wiki
 
 
 
