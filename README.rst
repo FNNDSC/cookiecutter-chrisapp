@@ -57,7 +57,7 @@ Create a GitHub account on https://github.com/ if you don't already have one.
 Docker Hub Account
 ------------------
 
-Create a Docker Hub acoount on https://hub.docker.com/ if you don't already have one.
+Create a Docker Hub account on https://hub.docker.com/ if you don't already have one.
 
 
 Quickstart
@@ -132,7 +132,7 @@ The interactive script will ask you to choose between two types of ChRIS plugins
 
    For more information on Automated Builds, visit https://docs.docker.com/docker-hub/builds/.
 
-10. Modify requirements.txt, Dockerfile and Python code with the proper versions of
+10. Modify ``requirements.txt``, ``Dockerfile`` and the Python code with the proper versions of
     Python dependencies and libraries and push your changes to Github.
 
     Look at https://github.com/FNNDSC/pl-simplefsapp (a simple **fs** plugin) and https://github.com/FNNDSC/pl-simpledsapp (a simple **ds** plugin)
