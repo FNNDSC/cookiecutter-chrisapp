@@ -4,6 +4,15 @@ cookiecutter-chrisapp
 
 A cookiecutter template for ChRIS plugin apps.
 
+Abstract
+========
+
+This page describes how to get started with creating a ChRIS plugin. The first-time steps typically involve:
+
+* Installing a python virtual environment for development.
+* Creating (if not already done) github and dockerhub accounts.
+* Checking out this repo and running the script.
+
 Requirements
 ============
 
