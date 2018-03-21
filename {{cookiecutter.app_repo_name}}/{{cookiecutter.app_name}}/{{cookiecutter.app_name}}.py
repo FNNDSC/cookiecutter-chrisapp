@@ -14,7 +14,6 @@ import os
 from chrisapp.base import ChrisApp
 
 
-
 class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     """
     {{ cookiecutter.app_description }}.
@@ -30,6 +29,14 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     DOCUMENTATION   = '{{ cookiecutter.app_documentation }}'
     VERSION         = '{{ cookiecutter.app_version }}'
     LICENSE         = 'Opensource (MIT)'
+    MAX_NUMBER_OF_WORKERS = 1  # Override with integer value
+    MIN_NUMBER_OF_WORKERS = 1  # Override with integer value
+    MAX_CPU_LIMIT         = '' # Override with millicore value as string, e.g. '2000m'
+    MIN_CPU_LIMIT         = '' # Override with millicore value as string, e.g. '2000m'
+    MAX_MEMORY_LIMIT      = '' # Override with string, e.g. '1Gi', '2000Mi'
+    MIN_MEMORY_LIMIT      = '' # Override with string, e.g. '1Gi', '2000Mi'
+    MIN_GPU_LIMIT         = 0  # Specifies the number of GPUs
+    MAX_GPU_LIMIT         = 0  # Specifies the number of GPUs
 
     # Fill out this with key-value output descriptive info (such as an output file path
     # relative to the output dir) that you want to save to the output meta file when
@@ -45,6 +52,7 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
         """
         Define the code to be run by this plugin app.
         """
+
 
 
 # ENTRYPOINT
