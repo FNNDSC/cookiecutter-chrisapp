@@ -45,7 +45,7 @@ Add these two lines to your .bashrc file::
 
 Create a new python3 virtual environment::
 
-    mkvirtualenv --python=pyhton3 chrisapp_env
+    mkvirtualenv --python=python3 chrisapp_env
 
 
 To activate chrisapp_env::
