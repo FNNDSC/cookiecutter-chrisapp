@@ -17,8 +17,10 @@ This page describes how to get started with creating a ChRIS plugin. The first-t
 Requirements
 ============
 
-Python and pip (which is usually installed with Python)
---------------------------------------------------------
+* ``Python`` and ``pip`` (which is usually installed with Python)
+* Latest ``Docker`` (17.04.0+) if you want to test your plugin's docker image and containers in your local machine. Visit https://docs.docker.com/install/ for installation directions
+
+
 
 Install virtualenv and virtualenvwrapper
 ----------------------------------------
@@ -46,7 +48,7 @@ Add these two lines to your .bashrc file::
     source $(which virtualenvwrapper.sh | head -n 1)
 
 
-Create a new python3 virtual environment::
+Create a new **Python3** virtual environment::
 
     mkvirtualenv --python=python3 chrisapp_env
 
@@ -79,7 +81,7 @@ Quickstart
 The steps below show how to quickly create and setup a new ChRIS plugin app project.
 
 
-1. Create a Python3 virtual environment for your plugin apps and activate it if you haven't created it yet (follow steps in Requirements).
+1. Create a **Python3** virtual environment for your plugin apps and activate it if you haven't created it yet (follow steps in Requirements).
 
 2. Install the latest Cookiecutter in ``chrisapp_env`` if you haven't installed it yet::
 
