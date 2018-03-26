@@ -35,8 +35,8 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     MIN_CPU_LIMIT         = '' # Override with millicore value as string, e.g. '2000m'
     MAX_MEMORY_LIMIT      = '' # Override with string, e.g. '1Gi', '2000Mi'
     MIN_MEMORY_LIMIT      = '' # Override with string, e.g. '1Gi', '2000Mi'
-    MIN_GPU_LIMIT         = 0  # Specifies the number of GPUs
-    MAX_GPU_LIMIT         = 0  # Specifies the number of GPUs
+    MIN_GPU_LIMIT         = 0  # Override with the minimum number of GPUs, as an integer, for your plugin
+    MAX_GPU_LIMIT         = 0  # Override with the maximum number of GPUs, as an integer, for your plugin
 
     # Fill out this with key-value output descriptive info (such as an output file path
     # relative to the output dir) that you want to save to the output meta file when
