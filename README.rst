@@ -12,12 +12,12 @@ This page describes how to get started with creating a ChRIS plugin. The first-t
 
 * Installing a python virtual environment for development.
 * Creating (if not already done) github and dockerhub accounts.
-* Checking out this repo and running the script, associating the app you want to create with both github and dockerhub.
+* Checking out this repo and running the script and then associating the app you are creating with both github and dockerhub.
 
 Requirements
 ============
 
-Python3 and pip (which is usually installed with Python)
+Python and pip (which is usually installed with Python)
 --------------------------------------------------------
 
 Install virtualenv and virtualenvwrapper
