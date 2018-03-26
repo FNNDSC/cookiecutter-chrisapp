@@ -17,8 +17,11 @@ This page describes how to get started with creating a ChRIS plugin. The first-t
 Requirements
 ============
 
-Install virtualenv
-------------------
+Python3 and pip (which is usually installed with Python)
+--------------------------------------------------------
+
+Install virtualenv and virtualenvwrapper
+----------------------------------------
 ::
 
     pip install virtualenv virtualenvwrapper
@@ -40,7 +43,7 @@ Open your .bashrc file::
 Add these two lines to your .bashrc file::
 
     export WORKON_HOME=~/python_envs
-    source /usr/local/bin/virtualenvwrapper.sh
+    source $(which virualenvwrapper.sh | head -n 1)
 
 
 Create a new python3 virtual environment::
