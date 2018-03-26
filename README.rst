@@ -43,7 +43,7 @@ Open your .bashrc file::
 Add these two lines to your .bashrc file::
 
     export WORKON_HOME=~/python_envs
-    source $(which virualenvwrapper.sh | head -n 1)
+    source $(which virtualenvwrapper.sh | head -n 1)
 
 
 Create a new python3 virtual environment::
