@@ -28,12 +28,13 @@ Install virtualenv and virtualenvwrapper
 
     pip install virtualenv virtualenvwrapper
     
-note: anaconda_ users on macOS should run
-``conda install virtualenv virtualenvwrapper`` instead. See
-`this thread`_ and the linked discussion on the anaconda mailing list.
+note: anaconda_ users on macOS should use the conda environment tools
+directly instead. `this thread`_ and the linked discussion on the
+anaconda mailing list. A working set of commands is `noted here`_.
 
 .. _anaconda: https://anaconda.org/
 .. _`this thread`: https://stackoverflow.com/questions/42190984/dyld-library-not-loaded-error-preventing-virtualenv-from-loading
+.. _`noted here`: https://github.com/FNNDSC/cookiecutter-chrisapp/pull/6#issuecomment-376626896
 
 Setup your virtual environments
 -------------------------------
