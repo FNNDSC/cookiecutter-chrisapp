@@ -29,7 +29,7 @@ Install virtualenv and virtualenvwrapper
     pip install virtualenv virtualenvwrapper
     
 note: anaconda_ users on macOS should use the conda environment tools
-directly instead. `this thread`_ and the linked discussion on the
+directly instead. See `this thread`_ and the linked discussion on the
 anaconda mailing list. A working set of commands is `noted here`_.
 
 .. _anaconda: https://anaconda.org/
