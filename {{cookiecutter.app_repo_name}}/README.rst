@@ -18,7 +18,7 @@ Assign an "input" directory to ``/incoming`` and an output directory to ``/outgo
 
 .. code-block:: bash
 
-    docker run -v --rm $(pwd)/in:/incoming -v $(pwd)/out:/outgoing   \
+    docker run --rm -v $(pwd)/in:/incoming -v $(pwd)/out:/outgoing   \
             fnndsc/{{ cookiecutter.app_repo_name }} {{ cookiecutter.app_name }}.py            \
             /incoming /outgoing
 
