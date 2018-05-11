@@ -11,4 +11,4 @@ WORKDIR $APPROOT
 
 RUN pip install -r requirements.txt
 
-CMD ["{{ cookiecutter.app_name }}.py", "--json"]
+CMD ["{{ cookiecutter.app_name }}.py", "--help"]
