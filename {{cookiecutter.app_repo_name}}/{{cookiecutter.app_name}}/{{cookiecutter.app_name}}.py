@@ -28,6 +28,7 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     DESCRIPTION     = '{{ cookiecutter.app_description }}'
     DOCUMENTATION   = '{{ cookiecutter.app_documentation }}'
     VERSION         = '{{ cookiecutter.app_version }}'
+    ICON            = '' # url of an icon image
     LICENSE         = 'Opensource (MIT)'
     MAX_NUMBER_OF_WORKERS = 1  # Override with integer value
     MIN_NUMBER_OF_WORKERS = 1  # Override with integer value
