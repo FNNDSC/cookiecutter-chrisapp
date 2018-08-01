@@ -97,6 +97,8 @@ The steps below show how to quickly create and setup a new ChRIS plugin app proj
 
 3. Generate a ChRIS plugin app project:
 
+..code:: bash
+
     cookiecutter https://github.com/FNNDSC/cookiecutter-chrisapp.git
     
 In running the above command, you will be prompted for an app project name. The app project name should be a valid python module name as described here https://www.python.org/dev/peps/pep-0008/#package-and-module-names.
