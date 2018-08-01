@@ -97,7 +97,7 @@ The steps below show how to quickly create and setup a new ChRIS plugin app proj
 
 3. Generate a ChRIS plugin app project:
 
-..code:: bash
+.. code:: bash
 
     cookiecutter https://github.com/FNNDSC/cookiecutter-chrisapp.git
     
