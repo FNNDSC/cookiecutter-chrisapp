@@ -140,11 +140,10 @@ The first plugin of a pipeline would always be a single **FS** plugin followed b
     git push origin master
 
 
-9. Create a new automated build and repository on your Docker Hub account (https://hub.docker.com).
-   Once you log in, click the Create button in the header and select Automated Build from the
-   drop-down menu. The website will walk you through setting up the automated build. Next, when
-   prompted for the GitHub repository that you’d like to use for the automated build select
-   the repository that you just created.
+9. Create a new repository with automated build on your Docker Hub account (https://hub.docker.com).
+   Once you log in, click the ``Create Repository +``  button. The website page will walk you through setting up the automated build. When
+   prompted for the GitHub repository that you’d like to use for the automated build select the repository that you just created. 
+   Click ``Create and Build``  button to finish the setup and trigger the automated build.
 
    For more information on Automated Builds, visit https://docs.docker.com/docker-hub/builds/.
 
