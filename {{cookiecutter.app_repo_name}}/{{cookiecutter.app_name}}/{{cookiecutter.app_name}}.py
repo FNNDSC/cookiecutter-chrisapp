@@ -1,7 +1,7 @@
 #                                                            _
 # {{ cookiecutter.app_name }} {{ cookiecutter.app_type }} app
 #
-# (c) 2016 Fetal-Neonatal Neuroimaging & Developmental Science Center
+# (c) 2016-2019 Fetal-Neonatal Neuroimaging & Developmental Science Center
 #                   Boston Children's Hospital
 #
 #              http://childrenshospital.org/FNNDSC/
@@ -18,30 +18,38 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     """
     {{ cookiecutter.app_description }}.
     """
-    AUTHORS         = '{{ cookiecutter.author_name }} ({{ cookiecutter.author_email }})'
-    SELFPATH        = os.path.dirname(os.path.abspath(__file__))
-    SELFEXEC        = os.path.basename(__file__)
-    EXECSHELL       = 'python3'
-    TITLE           = '{{ cookiecutter.app_title }}'
-    CATEGORY        = '{{ cookiecutter.app_category }}'
-    TYPE            = '{{ cookiecutter.app_type }}'
-    DESCRIPTION     = '{{ cookiecutter.app_description }}'
-    DOCUMENTATION   = '{{ cookiecutter.app_documentation }}'
-    VERSION         = '{{ cookiecutter.app_version }}'
-    ICON            = '' # url of an icon image
-    LICENSE         = 'Opensource (MIT)'
-    MAX_NUMBER_OF_WORKERS = 1  # Override with integer value
-    MIN_NUMBER_OF_WORKERS = 1  # Override with integer value
-    MAX_CPU_LIMIT         = '' # Override with millicore value as string, e.g. '2000m'
-    MIN_CPU_LIMIT         = '' # Override with millicore value as string, e.g. '2000m'
-    MAX_MEMORY_LIMIT      = '' # Override with string, e.g. '1Gi', '2000Mi'
-    MIN_MEMORY_LIMIT      = '' # Override with string, e.g. '1Gi', '2000Mi'
-    MIN_GPU_LIMIT         = 0  # Override with the minimum number of GPUs, as an integer, for your plugin
-    MAX_GPU_LIMIT         = 0  # Override with the maximum number of GPUs, as an integer, for your plugin
+    AUTHORS                 = '{{ cookiecutter.author_name }} ({{ cookiecutter.author_email }})'
+    SELFPATH                = os.path.dirname(os.path.abspath(__file__))
+    SELFEXEC                = os.path.basename(__file__)
+    EXECSHELL               = 'python3'
+    TITLE                   = '{{ cookiecutter.app_title }}'
+    CATEGORY                = '{{ cookiecutter.app_category }}'
+    TYPE                    = '{{ cookiecutter.app_type }}'
+    DESCRIPTION             = '{{ cookiecutter.app_description }}'
+    DOCUMENTATION           = '{{ cookiecutter.app_documentation }}'
+    VERSION                 = '{{ cookiecutter.app_version }}'
+    ICON                    = '' # url of an icon image
+    LICENSE                 = 'Opensource (MIT)'
+    MAX_NUMBER_OF_WORKERS   = 1  # Override with integer value
+    MIN_NUMBER_OF_WORKERS   = 1  # Override with integer value
+    MAX_CPU_LIMIT           = '' # Override with millicore value as string, e.g. '2000m'
+    MIN_CPU_LIMIT           = '' # Override with millicore value as string, e.g. '2000m'
+    MAX_MEMORY_LIMIT        = '' # Override with string, e.g. '1Gi', '2000Mi'
+    MIN_MEMORY_LIMIT        = '' # Override with string, e.g. '1Gi', '2000Mi'
+    MIN_GPU_LIMIT           = 0  # Override with the minimum number of GPUs, as an integer, for your plugin
+    MAX_GPU_LIMIT           = 0  # Override with the maximum number of GPUs, as an integer, for your plugin
 
-    # Fill out this with key-value output descriptive info (such as an output file path
-    # relative to the output dir) that you want to save to the output meta file when
-    # called with the --saveoutputmeta flag
+    # Use this dictionary structure to provide key-value output descriptive information
+    # that may be useful for the next downstream plugin. For example:
+    #
+    # {
+    #   "finalOutputFile":  "final/file.out",
+    #   "viewer":           "genericTextViewer",
+    # }
+    #
+    # The above dictinary is saved when plugin is called with a ``--saveoutputmeta`` 
+    # flag. Note also that all file paths are relative to the system specified
+    # output directory.
     OUTPUT_META_DICT = {}
  
     def define_parameters(self):
@@ -53,8 +61,6 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
         """
         Define the code to be run by this plugin app.
         """
-
-
 
 # ENTRYPOINT
 if __name__ == "__main__":
