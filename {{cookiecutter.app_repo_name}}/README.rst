@@ -1,42 +1,14 @@
-################################
-{{ cookiecutter.app_repo_name }}
-################################
-
-
-Abstract
-********
-
-{{ cookiecutter.app_description }}
-
-Run
-***
-
-Using ``docker run``
-====================
-
-Assign an "input" directory to ``/incoming`` and an output directory to ``/outgoing``
-
-.. code-block:: bash
-
-    docker run --rm -v $(pwd)/in:/incoming -v $(pwd)/out:/outgoing   \
-            fnndsc/{{ cookiecutter.app_repo_name }} {{ cookiecutter.app_name }}.py            \
-            /incoming /outgoing
-
-This will ...
-
-Make sure that the host ``$(pwd)/out`` directory is world writable!
-
 {{ cookiecutter.app_repo_name }}
 ================================
 
-.. image:: https://badge.fury.io/py/simpledsapp.svg
-    :target: https://badge.fury.io/py/simpledsapp
+.. image:: https://badge.fury.io/py/{{ cookiecutter.app_name }}.svg
+    :target: https://badge.fury.io/py/{{ cookiecutter.app_name }}
 
-.. image:: https://travis-ci.org/FNNDSC/simpledsapp.svg?branch=master
-    :target: https://travis-ci.org/FNNDSC/simpledsapp
+.. image:: https://travis-ci.org/FNNDSC/{{ cookiecutter.app_name }}.svg?branch=master
+    :target: https://travis-ci.org/FNNDSC/{{ cookiecutter.app_name }}
 
 .. image:: https://img.shields.io/badge/python-3.5%2B-blue.svg
-    :target: https://badge.fury.io/py/pl-simpledsapp
+    :target: https://badge.fury.io/py/pl-{{ cookiecutter.app_name }}
 
 .. contents:: Table of Contents
 
@@ -44,18 +16,16 @@ Make sure that the host ``$(pwd)/out`` directory is world writable!
 Abstract
 --------
 
-``simpledsapp`` is a simple DS plugin that copies directories file from an ``input`` to ``output``. If called with an optional ``--ignoreInputDir`` the plugin will simply write a JSON formatted timestamp to the output directory.
+{{ cookiecutter.app_description }}
+
 
 Synopsis
 --------
 
-.. code::
+.. code:: bash
 
-    python simpledsapp.py                                           \
+    python {{ cookiecutter.app_name }}.py                                           \
         [-v <level>] [--verbosity <level>]                          \
-        [--prefix <filePrefixString>]                               \
-        [--sleepLength <sleepLength>]                               \
-        [--ignoreInputDir]                                          \
         [--version]                                                 \
         [--man]                                                     \
         [--meta]                                                    \
@@ -75,19 +45,19 @@ To run from PyPI, simply do a
 
 .. code:: bash
 
-    pip install simpledsapp
+    pip install {{ cookiecutter.app_name }}
 
 and run with
 
 .. code:: bash
 
-    simpledsapp.py --man /tmp /tmp
+    {{ cookiecutter.app_name }}.py --man /tmp /tmp
 
-to get inline help. To copy from one directory to another, simply do
+to get inline help. The app should also understand being called with only two positional arguments
 
 .. code:: bash
 
-    simpledsapp.py /some/input/directory /destination/directory
+    {{ cookiecutter.app_name }}.py /some/input/directory /destination/directory
 
 
 Using ``docker run``
@@ -100,7 +70,7 @@ Now, prefix all calls with
 .. code:: bash
 
     docker run --rm -v $(pwd)/out:/outgoing                             \
-            fnndsc/pl-simpledsapp simpledsapp.py                        \
+            fnndsc/pl-{{ cookiecutter.app_name }} {{ cookiecutter.app_name }}.py                        \
 
 Thus, getting inline help is:
 
@@ -108,7 +78,7 @@ Thus, getting inline help is:
 
     mkdir in out && chmod 777 out
     docker run --rm -v $(pwd)/in:/incoming -v $(pwd)/out:/outgoing      \
-            fnndsc/pl-simpledsapp simpledsapp.py                        \
+            fnndsc/pl-{{ cookiecutter.app_name }} {{ cookiecutter.app_name }}.py                        \
             --man                                                       \
             /incoming /outgoing
 
