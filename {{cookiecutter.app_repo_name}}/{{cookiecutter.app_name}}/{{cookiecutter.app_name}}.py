@@ -50,7 +50,7 @@ flags below are supported.)
 
     DESCRIPTION
 
-        `.{{ cookiecutter.app_name }}py` ...
+        `{{ cookiecutter.app_name }}py` ...
 
     ARGS
 
