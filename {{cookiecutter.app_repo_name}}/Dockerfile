@@ -33,6 +33,7 @@ COPY ["requirements.txt", "${APPROOT}"]
 
 WORKDIR $APPROOT
 
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 CMD ["{{ cookiecutter.app_name }}.py", "--help"]
