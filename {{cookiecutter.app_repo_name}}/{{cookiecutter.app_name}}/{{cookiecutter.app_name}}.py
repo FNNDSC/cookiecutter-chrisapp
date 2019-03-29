@@ -9,10 +9,11 @@
 #                        dev@babyMRI.org
 #
 
-import os
+import  sys
+import  os
 
 # import the Chris app superclass
-from chrisapp.base import ChrisApp
+from    chrisapp.base   import ChrisApp
 
 Gstr_title = """
 
