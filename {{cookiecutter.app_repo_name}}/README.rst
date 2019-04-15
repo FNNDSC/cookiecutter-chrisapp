@@ -22,7 +22,7 @@ Abstract
 Synopsis
 --------
 
-.. code:: bash
+.. code::
 
     python {{ cookiecutter.app_name }}.py                                           \
         [-v <level>] [--verbosity <level>]                          \
@@ -31,6 +31,28 @@ Synopsis
         [--meta]                                                    \
         <inputDir>
         <outputDir> 
+
+Description
+-----------
+
+``{{ cookiecutter.app_name }}.py`` is a ChRIS-based application that...
+
+Agruments
+---------
+
+.. code::
+
+    [-v <level>] [--verbosity <level>]
+    Verbosity level for app. Not used currently.
+
+    [--version]
+    If specified, print version number. 
+    
+    [--man]
+    If specified, print (this) man page.
+
+    [--meta]
+    If specified, print plugin meta data.
 
 
 Run
