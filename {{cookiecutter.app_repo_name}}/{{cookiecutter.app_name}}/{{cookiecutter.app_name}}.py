@@ -25,7 +25,10 @@ http://patorjk.com/software/taag/#p=display&f=Doom&t=pluginTitle
 Gstr_synopsis = """
 
 (Edit this in-line help for app specifics. At a minimum, the 
-flags below are supported.)
+flags below are supported -- in the case of DS apps, both
+positional arguments <inputDir> and <outputDir>; for FS apps
+only <outputDir> -- and similarly for <in> <out> directories
+where necessary.)
 
     NAME
 
