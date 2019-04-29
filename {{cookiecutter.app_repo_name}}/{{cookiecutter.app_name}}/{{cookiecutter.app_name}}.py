@@ -9,7 +9,7 @@
 #                        dev@babyMRI.org
 #
 
-import  os
+import os
 
 # import the Chris app superclass
 from chrisapp.base import ChrisApp
@@ -62,13 +62,13 @@ where necessary.)
         Verbosity level for app. Not used currently.
 
         [--version]
-        If specified, print version number. 
+        If specified, print version number and exit. 
         
         [--man]
-        If specified, print (this) man page.
+        If specified, print (this) man page and exit.
 
         [--meta]
-        If specified, print plugin meta data.
+        If specified, print plugin meta data and exit.
 
 """
 
@@ -129,7 +129,6 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
         Print the app's man page.
         """
         print(Gstr_synopsis)
-
 
 
 # ENTRYPOINT
