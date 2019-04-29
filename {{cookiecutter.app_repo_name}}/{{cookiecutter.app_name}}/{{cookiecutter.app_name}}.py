@@ -14,6 +14,7 @@ import  os
 # import the Chris app superclass
 from chrisapp.base import ChrisApp
 
+
 Gstr_title = """
 
 Generate a title from 
@@ -71,6 +72,7 @@ where necessary.)
 
 """
 
+
 class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     """
     {{ cookiecutter.app_description }}.
@@ -127,6 +129,8 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
         Print the app's man page.
         """
         print(Gstr_synopsis)
+
+
 
 # ENTRYPOINT
 if __name__ == "__main__":
