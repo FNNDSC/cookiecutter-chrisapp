@@ -15,7 +15,7 @@ def readme():
 
 setup(
       name             =   '{{ cookiecutter.app_name }}',
-      version          =   '0.0.99',
+      version          =   '{{ cookiecutter.app_version }}',
       description      =   '{{ cookiecutter.app_description }}', 
       long_description =   readme(),
       author           =   '{{ cookiecutter.author_name }}',
