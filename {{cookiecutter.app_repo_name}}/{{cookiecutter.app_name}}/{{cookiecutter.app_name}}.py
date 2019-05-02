@@ -9,8 +9,8 @@
 #                        dev@babyMRI.org
 #
 
-import os
 
+import os
 # import the Chris app superclass
 from chrisapp.base import ChrisApp
 

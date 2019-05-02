@@ -18,8 +18,10 @@ def readme():
 
 setup(
       name             =   '{{ cookiecutter.app_name }}',
+      # for best practices make this version the same as the VERSION class variable
+      # defined in your main plugin app class
       version          =   '{{ cookiecutter.app_version }}',
-      description      =   '{{ cookiecutter.app_description }}', 
+      description      =   '{{ cookiecutter.app_description }}',
       long_description =   readme(),
       author           =   '{{ cookiecutter.author_name }}',
       author_email     =   '{{ cookiecutter.author_email }}',

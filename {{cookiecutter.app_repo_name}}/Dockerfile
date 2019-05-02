@@ -26,7 +26,7 @@
 FROM fnndsc/ubuntu-python3:latest
 MAINTAINER fnndsc "dev@babymri.org"
 
-ENV APPROOT="/usr/src/{{ cookiecutter.app_name }}"  VERSION="{{ cookiecutter.app_version }}"
+ENV APPROOT="/usr/src/{{ cookiecutter.app_name }}"
 COPY ["{{ cookiecutter.app_name }}", "${APPROOT}"]
 COPY ["requirements.txt", "${APPROOT}"]
 

@@ -141,22 +141,26 @@ The first plugin of a pipeline would always be a single **FS** plugin followed b
 
 
 9. Create a new repository with automated build on your Docker Hub account (https://hub.docker.com).
+
    Once you log in, click the ``Create Repository +``  button. The website page will walk you through setting up the automated build. When
    prompted for the GitHub repository that you’d like to use for the automated build select the repository that you just created. 
-   Click ``Create and Build``  button to finish the setup and trigger the automated build.
 
-   For more information on Automated Builds, visit https://docs.docker.com/docker-hub/builds/.
+   **It is extremely important that you tag your automatically built docker image with an appropriate version number based on your Github tags**.
+   So please create a new build rule by clicking the ``BUILD RULES +``  button. A good rule good be **Source type:** ``Tag``,
+   **Source:** ``/^[0-9.]+$/`` and **Docker Tag:** ``version-{sourceref}``.
 
-10. Modify ``requirements.txt``, ``Dockerfile`` and the Python code with the proper versions of
+   Click ``Create && Build``  button to finish the setup and trigger the automated build.
+   For more information on Automated Builds, please visit https://docs.docker.com/docker-hub/builds/.
+
+10. Modify ``requirements.txt``, ``setup.py``, ``Dockerfile`` and the Python code with the proper versions of
     Python dependencies and libraries and push your changes to Github.
 
     Look at https://github.com/FNNDSC/pl-simplefsapp (a simple **fs** plugin) and https://github.com/FNNDSC/pl-simpledsapp (a simple **ds** plugin)
     for guidance on getting started with your ChRIS plugin!
 
-11. Once you've developed and properly tested your plugin app consult the wiki_ to learn how to register it to ChRIS and the ChRIS store.
+11. Once you've developed and properly tested your plugin app you can make a new release by running the provided ``release.sh`` script with a
+    version number for the release.
+
+12. Finally please consult the wiki_ to learn how to register your containerized plugin app to ChRIS and the ChRIS store.
 
 .. _wiki: https://github.com/FNNDSC/cookiecutter-chrisapp/wiki
-
-
-
-
