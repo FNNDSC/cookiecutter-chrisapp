@@ -1,6 +1,6 @@
 #!/usr/bin/env python                                            
-#                                                            _
-# {{ cookiecutter.app_name }} {{ cookiecutter.app_type }} app
+#
+# {{ cookiecutter.app_name }} {{ cookiecutter.app_type }} ChRIS plugin app
 #
 # (c) 2016-2019 Fetal-Neonatal Neuroimaging & Developmental Science Center
 #                   Boston Children's Hospital
@@ -18,7 +18,7 @@ from chrisapp.base import ChrisApp
 Gstr_title = """
 
 Generate a title from 
-http://patorjk.com/software/taag/#p=display&f=Doom&t=pluginTitle
+http://patorjk.com/software/taag/#p=display&f=Doom&t={{ cookiecutter.app_name }}
 
 """
 
@@ -133,5 +133,5 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
 
 # ENTRYPOINT
 if __name__ == "__main__":
-    app = {{ cookiecutter.app_python_class_name }}()
-    app.launch()
+    chris_app = {{ cookiecutter.app_python_class_name }}()
+    chris_app.launch()
