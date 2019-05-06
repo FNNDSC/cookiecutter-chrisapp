@@ -37,10 +37,13 @@ where necessary.)
     SYNOPSIS
 
         python {{ cookiecutter.app_name }}.py                                         \\
-            [-v <level>] [--verbosity <level>]                          \\
-            [--version]                                                 \\
+            [-h] [--help]                                               \\
+            [--json]                                                    \\
             [--man]                                                     \\
             [--meta]                                                    \\
+            [--savejson <DIR>]                                          \\
+            [-v <level>] [--verbosity <level>]                          \\
+            [--version]                                                 \\
             <inputDir>                                                  \\
             <outputDir> 
 
@@ -58,17 +61,26 @@ where necessary.)
 
     ARGS
 
-        [-v <level>] [--verbosity <level>]
-        Verbosity level for app. Not used currently.
-
-        [--version]
-        If specified, print version number and exit. 
+        [-h] [--help]
+        If specified, show help message and exit.
+        
+        [--json]
+        If specified, show json representation of app and exit.
         
         [--man]
         If specified, print (this) man page and exit.
 
         [--meta]
         If specified, print plugin meta data and exit.
+        
+        [--savejson <DIR>] 
+        If specified, save json representation file to DIR and exit. 
+        
+        [-v <level>] [--verbosity <level>]
+        Verbosity level for app. Not used currently.
+        
+        [--version]
+        If specified, print version number and exit. 
 
 """
 
