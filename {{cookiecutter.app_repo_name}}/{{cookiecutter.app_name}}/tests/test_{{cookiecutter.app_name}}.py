@@ -20,7 +20,8 @@ class {{ cookiecutter.app_python_class_name }}Tests(TestCase):
             args.append('inputdir') # you may want to change this inputdir mock
         args.append('outputdir')  # you may want to change this outputdir mock
 
-        # you may want to add more optional arguments to test your app with
+        # you may want to add more of your custom defined optional arguments to test
+        # your app with
         # eg.
         # args.append('--custom-int')
         # args.append(10)

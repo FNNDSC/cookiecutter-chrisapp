@@ -4,8 +4,9 @@ import os
 
 
 # Make sure we are running python3.5+
-if 10 * sys.version_info[0]  + sys.version_info[1] < 35:
+if 10 * sys.version_info[0] + sys.version_info[1] < 35:
     sys.exit("Sorry, only Python 3.5+ is supported.")
+
 
 from setuptools import setup
 
@@ -19,7 +20,7 @@ def readme():
 setup(
       name             =   '{{ cookiecutter.app_name }}',
       # for best practices make this version the same as the VERSION class variable
-      # defined in your main plugin app class
+      # defined in your ChrisApp-derived Python class
       version          =   '{{ cookiecutter.app_version }}',
       description      =   '{{ cookiecutter.app_description }}',
       long_description =   readme(),

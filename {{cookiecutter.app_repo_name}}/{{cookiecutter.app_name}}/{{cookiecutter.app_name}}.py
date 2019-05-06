@@ -106,7 +106,7 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     #   "viewer":           "genericTextViewer",
     # }
     #
-    # The above dictinary is saved when plugin is called with a ``--saveoutputmeta`` 
+    # The above dictionary is saved when plugin is called with a ``--saveoutputmeta``
     # flag. Note also that all file paths are relative to the system specified
     # output directory.
     OUTPUT_META_DICT = {}

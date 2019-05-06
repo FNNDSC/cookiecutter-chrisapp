@@ -14,7 +14,7 @@ G_SYNOPSIS="
 
 	<ver>
 	A version string. For best practices make this version the same as
-	the VERSION class variable defined in your main plugin app class.
+	the VERSION class variable defined in your ChrisApp-derived Python class.
 
 	--pypi
 	Optional flag to also upload the new version to PyPI.
