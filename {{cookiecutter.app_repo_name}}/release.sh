@@ -54,7 +54,7 @@ else
     exit 1
 fi
 if [[ "$#" -eq 2 ]]; then
-    echo pushing $VER to PyPI ...
+    echo Pushing $VER to PyPI ...
     rstcheck README.rst
     python3 setup.py sdist
     twine upload dist/{{ cookiecutter.app_name }}-${VER}.tar.gz

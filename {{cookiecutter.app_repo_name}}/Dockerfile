@@ -1,4 +1,4 @@
-# Docker file for {{ cookiecutter.app_name }} plugin app
+# Docker file for {{ cookiecutter.app_name }} ChRIS plugin app
 #
 # Build with
 #
