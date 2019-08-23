@@ -142,14 +142,12 @@ The first plugin of a pipeline would always be a single **FS** plugin followed b
 
 9. Create a new repository with automated build on your Docker Hub account (https://hub.docker.com).
 
-   Once you log in, click the ``Create Repository +``  button. The website page will walk you through setting up the automated build. When
-   prompted for the GitHub repository that you’d like to use for the automated build select the repository that you just created. 
-
-   **It is extremely important that you tag your automatically built docker image with an appropriate version number based on your Github tags**.
-   So please create a new build rule by clicking the ``BUILD RULES +``  button. A good rule good be **Source type:** ``Tag``,
-   **Source:** ``/^[0-9.]+$/`` and **Docker Tag:** ``version-{sourceref}``.
+   Once you log in, click the ``Create Repository +``  button. At the top of the page, enter a name for the dockerhub repository -- this name can be anything of course. We recommend using the same as the github repo. Then, click on the github icon towards the bottom (it also should say "Connected" under the icon). For the github organization choose, for example, FNNDSC, and then within that organization select the repository created above.
+   
+   **It is extremely important that you tag your automatically built docker image with an appropriate version number based on your Github tags**. Please create a new build rule by clicking the ``BUILD RULES +``  button. A good rule good be **Source type:** ``Tag``, **Source:** ``/^[0-9.]+$/`` and **Docker Tag:** ``version-{sourceref}``.
 
    Click ``Create && Build``  button to finish the setup and trigger the automated build.
+
    For more information on Automated Builds, please visit https://docs.docker.com/docker-hub/builds/.
 
 10. Modify ``requirements.txt``, ``setup.py``, ``Dockerfile`` and the Python code with the proper versions of
