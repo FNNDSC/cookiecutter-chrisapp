@@ -1,10 +1,19 @@
-#####################
-cookiecutter-chrisapp
-#####################
+############################
+cookiecutter-chrisapp |Logo| 
+############################
 
+|License| |Last Commit|
+
+.. |Logo| image:: ../assets/logo_chris.png?raw=true
+  :alt: ChRIS Logo
+.. |License| image:: https://img.shields.io/github/license/fnndsc/cookiecutter-chrisapp.svg
+  :alt: License
+.. |Last Commit| image:: https://img.shields.io/github/last-commit/fnndsc/cookiecutter-chrisapp.svg
+  :alt: Last Commit
+  
 A cookiecutter template for ChRIS plugin apps.
-
-
+  
+  
 Abstract
 ========
 
