@@ -73,7 +73,7 @@ i. **FS** (or **Feed Synthesis**) plugin app. These are **always** the first plu
 ::
 
    ┌───────────────────┐
-   │ ChRIS 'FS' plugin │ ──► /outgoing results
+   │ ChRIS 'FS' plugin │ ──► /outputdir
    └───────────────────┘
 
 
@@ -82,9 +82,9 @@ ii. **DS** (or **Data Synthesis**) plugin app. These are by far the most common 
 
 ::
 
-                       ┌───────────────────┐
-    /incoming data ──► │ ChRIS 'DS' plugin │ ──► /outgoing results
-                       └───────────────────┘
+                  ┌───────────────────┐
+    /inputdir ──► │ ChRIS 'DS' plugin │ ──► /outputdir
+                  └───────────────────┘
 
 
 The first plugin of a pipeline would always be a single **FS** plugin followed by a (possibly branched) chain of **DS** plugins creating files in the same single feed that was created by the root **FS** plugin. **Most of the time you will be creating a DS plugin when integrating your software application in ChRIS**.
