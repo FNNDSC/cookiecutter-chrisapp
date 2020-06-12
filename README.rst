@@ -42,7 +42,7 @@ ChRIS apps are known as plugins. They can be thought of as data processing modul
 ::
 
                        ┌───────────────────┐
-    /incoming data ──► │ ChRIS 'DS' plugin │ ──► /outgoing results
+    /incoming data ───►│ ChRIS 'DS' plugin ├───► /outgoing results
                        └───────────────────┘
 
 Requirements
@@ -73,7 +73,7 @@ i. **FS** (or **Feed Synthesis**) plugin app. These are **always** the first plu
 ::
 
    ┌───────────────────┐
-   │ ChRIS 'FS' plugin │ ──► /outputdir
+   │ ChRIS 'FS' plugin ├───► /outputdir
    └───────────────────┘
 
 The ``outputdir`` of a plugin becomes the ``inputdir`` of the next plugin down the processing chain.
@@ -84,7 +84,7 @@ ii. **DS** (or **Data Synthesis**) plugin app. These are by far the most common 
 ::
 
                   ┌───────────────────┐
-    /inputdir ──► │ ChRIS 'DS' plugin │ ──► /outputdir
+    /inputdir ───►│ ChRIS 'DS' plugin ├───► /outputdir
                   └───────────────────┘
 
 The first plugin of a pipeline would always be a single **FS** plugin followed by a (possibly branched) chain of **DS** plugins creating files in the same single feed that was created by the root **FS** plugin. **Most of the time you will be creating a DS plugin when integrating your software application in ChRIS**.
