@@ -37,7 +37,7 @@ Beginners should read our `Introduction to Docker`_ and learn how to set up a `P
 .. _Introduction to Docker: https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Introduction-to-Docker
 .. _Python virtual environment: https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Best-Practices#python-environments
 
-ChRIS apps are known as plugins. They can be thought of as data processing modules. Plugins are typically coded in Python. (The app doesn't have to be Python, but non-Python plugins must provide a Python wrapper/entrypoint), and can in most cases be simply described as processing input data and creating output results.
+ChRIS apps are known as plugins. They can be thought of as data processing modules. Plugins are typically coded in Python. (the app doesn't have to be Python, but non-Python plugins must provide a Python wrapper/entrypoint). In most cases ChRIS apps be simply thought of as processing input data and creating output results. Importantly, ChRIS apps, since they often run in remote environments, have *NO GUI USER INTERFACES*. All information pertinent to the plugin execution is supplied via command line arguments and/or data in an ``inputDirectory``.
 
 ::
 
@@ -76,6 +76,7 @@ i. **FS** (or **Feed Synthesis**) plugin app. These are **always** the first plu
    │ ChRIS 'FS' plugin │ ──► /outputdir
    └───────────────────┘
 
+The ``outputdir`` of a plugin becomes the ``inputdir`` of the next plugin down the processing chain.
 
 
 ii. **DS** (or **Data Synthesis**) plugin app. These are by far the most common plugins and enforce **two** positional arguments: an **input** directory (typically the result of a previous plugin's output) and an **output** directory.
@@ -86,8 +87,16 @@ ii. **DS** (or **Data Synthesis**) plugin app. These are by far the most common 
     /inputdir ──► │ ChRIS 'DS' plugin │ ──► /outputdir
                   └───────────────────┘
 
-
 The first plugin of a pipeline would always be a single **FS** plugin followed by a (possibly branched) chain of **DS** plugins creating files in the same single feed that was created by the root **FS** plugin. **Most of the time you will be creating a DS plugin when integrating your software application in ChRIS**.
+
+Execution chains follow logically as linked list of an **FS** plugin followed by one or more **DS** plugins.
+
+::
+
+   ┌───────────────────┐  ┌─►/outputdir    ┌───────────────────┐  ┌─►/outputdir    ┌───────────────────┐  ┌─►/outputdir     
+   │ ChRIS 'FS' plugin ├──┘      |     ┌──►│ ChRIS 'DS' plugin1├──┘      |     ┌──►│ ChRIS 'DS' plugin2├──┘
+   └───────────────────┘     /inputdir─┘   └───────────────────┘     /inputdir─┘   └───────────────────┘       
+
 
 3. Add your code.
 
