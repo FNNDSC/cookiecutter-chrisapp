@@ -37,7 +37,7 @@ Beginners should read our `Introduction to Docker`_ and learn how to set up a `P
 .. _Introduction to Docker: https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Introduction-to-Docker
 .. _Python virtual environment: https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Best-Practices#python-environments
 
-ChRIS apps are known as plugins. They can be thought of as data processing modules. Plugins are typically coded in Python (the app doesn't have to be Python, but non-Python plugins must provide a Python wrapper/entrypoint). In most cases ChRIS apps process data from an ``inputdir`` and save results in an ``outputdir``. Importantly, ChRIS apps, since they often run in remote environments, have *NO GUI USER INTERFACES*. All information pertinent to the plugin execution is supplied via command line arguments and/or data in the ``inputdir``.
+ChRIS apps are known as plugins. They can be thought of as data processing modules. Plugins are typically coded in Python (the app doesn't have to be Python, but non-Python plugins are most easily deployed to the ChRIS platform using our ``ChrisApp`` Python wrapper/entrypoint). In most cases ChRIS apps process data from an ``inputdir`` and save results in an ``outputdir``. Importantly, ChRIS apps, since they often run in remote environments, have *NO GUI USER INTERFACES*. All information pertinent to the plugin execution is supplied via command line arguments and/or data in the ``inputdir``.
 
 ::
 
