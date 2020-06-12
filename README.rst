@@ -68,7 +68,7 @@ In running the above command, you will be prompted for an app project name. The 
 
 The interactive script will ask you to choose between two types of ChRIS plugins.
 
-i. **FS** (or **Feed Synthesis**) plugin app. These are **always** the first plugins in a Feed chain. They can be thought of as applications that primarily create ``outgoing`` results and do not need have a preceding `incoming` directory. Often, an **FS** app will generate data in response to some user behavior -- such as dragging and dropping files from the user's local context a box; or user querying a database for data; etc). These plugins **only** enforce a single positional argument -- an output directory where the results of the synthesis event are stored. 
+i. **FS** (or **Feed Synthesis**) plugin app. These are **always** the first plugins in a Feed chain. They can be thought of as applications that primarily create ``outgoing`` results and do not have a preceding `incoming` directory. Often, an **FS** app will generate data in response to some user behavior (such as dragging and dropping files from the user's local context; or user querying a database for data; or even simply copying files within its container filesystem to the output directory). These plugins **only** enforce a single positional argument -- an output directory where the results of some *feed synthesis* event are stored. 
 
 ::
 
