@@ -37,7 +37,7 @@ Description
 
 ``{{ cookiecutter.app_name }}.py`` is a ChRIS-based application that...
 
-Agruments
+Arguments
 ---------
 
 .. code::
