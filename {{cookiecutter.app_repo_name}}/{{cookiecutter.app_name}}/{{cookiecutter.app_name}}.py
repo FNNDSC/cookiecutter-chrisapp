@@ -2,7 +2,7 @@
 #
 # {{ cookiecutter.app_name }} {{ cookiecutter.app_type }} ChRIS plugin app
 #
-# (c) 2016-2019 Fetal-Neonatal Neuroimaging & Developmental Science Center
+# (c) 2016-2020 Fetal-Neonatal Neuroimaging & Developmental Science Center
 #                   Boston Children's Hospital
 #
 #              http://childrenshospital.org/FNNDSC/
@@ -92,10 +92,10 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     """
     {{ cookiecutter.app_description }}.
     """
-    AUTHORS                 = '{{ cookiecutter.author_name }} ({{ cookiecutter.author_email }})'
+    AUTHORS                 = '{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>'
     SELFPATH                = os.path.dirname(os.path.abspath(__file__))
     SELFEXEC                = os.path.basename(__file__)
-    EXECSHELL               = 'python3'
+    EXECSHELL               = 'python'
     TITLE                   = '{{ cookiecutter.app_title }}'
     CATEGORY                = '{{ cookiecutter.app_category }}'
     TYPE                    = '{{ cookiecutter.app_type }}'
