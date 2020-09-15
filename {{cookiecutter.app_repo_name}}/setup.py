@@ -16,8 +16,12 @@ setup(
     install_requires = ['chrisapp~=1.1.6'],
     test_suite       = 'nose.collector',
     tests_require    = ['nose'],
-    scripts          = ['{{ cookiecutter.app_name }}/{{ cookiecutter.app_name }}.py'],
     license          = 'MIT',
     zip_safe         = False,
     python_requires  = '>=3.5',
+    entry_points     = {
+        'console_scripts': [
+            '{{ cookiecutter.app_name }} = {{ cookiecutter.app_name }}.__main__:main'
+            ]
+        }
 )

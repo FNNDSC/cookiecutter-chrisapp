@@ -144,9 +144,3 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
         Print the app's man page.
         """
         print(Gstr_synopsis)
-
-
-# ENTRYPOINT
-if __name__ == "__main__":
-    chris_app = {{ cookiecutter.app_python_class_name }}()
-    chris_app.launch()
