@@ -6,8 +6,6 @@ with open(path.join(path.abspath(path.dirname(__file__)), 'README.rst')) as f:
 
 setup(
     name             = '{{ cookiecutter.app_name }}',
-    # for best practices make this version the same as the VERSION class variable
-    # defined in your ChrisApp-derived Python class
     version          = '{{ cookiecutter.app_version }}',
     description      = '{{ cookiecutter.app_description }}',
     long_description = readme,

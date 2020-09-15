@@ -12,9 +12,9 @@
 
 import os
 import sys
+import importlib.metadata
 sys.path.append(os.path.dirname(__file__))
 
-# import the Chris app superclass
 from chrisapp.base import ChrisApp
 
 
@@ -101,7 +101,7 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     TYPE                    = '{{ cookiecutter.app_type }}'
     DESCRIPTION             = '{{ cookiecutter.app_description }}'
     DOCUMENTATION           = '{{ cookiecutter.app_documentation }}'
-    VERSION                 = '{{ cookiecutter.app_version }}'
+    VERSION                 = importlib.metadata.version(__package__)
     ICON                    = '' # url of an icon image
     LICENSE                 = 'Opensource (MIT)'
     MAX_NUMBER_OF_WORKERS   = 1  # Override with integer value
