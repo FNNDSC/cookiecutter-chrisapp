@@ -2,7 +2,7 @@
 #
 # {{ cookiecutter.app_name }} {{ cookiecutter.app_type }} ChRIS plugin app
 #
-# (c) 2016-2019 Fetal-Neonatal Neuroimaging & Developmental Science Center
+# (c) 2016-2020 Fetal-Neonatal Neuroimaging & Developmental Science Center
 #                   Boston Children's Hospital
 #
 #              http://childrenshospital.org/FNNDSC/
@@ -12,9 +12,9 @@
 
 import os
 import sys
+import importlib.metadata
 sys.path.append(os.path.dirname(__file__))
 
-# import the Chris app superclass
 from chrisapp.base import ChrisApp
 
 
@@ -92,16 +92,16 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     """
     {{ cookiecutter.app_description }}.
     """
-    AUTHORS                 = '{{ cookiecutter.author_name }} ({{ cookiecutter.author_email }})'
+    AUTHORS                 = '{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>'
     SELFPATH                = os.path.dirname(os.path.abspath(__file__))
     SELFEXEC                = os.path.basename(__file__)
-    EXECSHELL               = 'python3'
+    EXECSHELL               = 'python'
     TITLE                   = '{{ cookiecutter.app_title }}'
     CATEGORY                = '{{ cookiecutter.app_category }}'
     TYPE                    = '{{ cookiecutter.app_type }}'
     DESCRIPTION             = '{{ cookiecutter.app_description }}'
     DOCUMENTATION           = '{{ cookiecutter.app_documentation }}'
-    VERSION                 = '{{ cookiecutter.app_version }}'
+    VERSION                 = importlib.metadata.version(__package__)
     ICON                    = '' # url of an icon image
     LICENSE                 = 'Opensource (MIT)'
     MAX_NUMBER_OF_WORKERS   = 1  # Override with integer value
@@ -144,9 +144,3 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
         Print the app's man page.
         """
         print(Gstr_synopsis)
-
-
-# ENTRYPOINT
-if __name__ == "__main__":
-    chris_app = {{ cookiecutter.app_python_class_name }}()
-    chris_app.launch()

@@ -1,2 +1,1 @@
-chrisapp
-pudb
+chrisapp~=1.1.6

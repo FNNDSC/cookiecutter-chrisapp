@@ -26,13 +26,8 @@
 FROM fnndsc/ubuntu-python3:latest
 MAINTAINER fnndsc "dev@babymri.org"
 
-ENV APPROOT="/usr/src/{{ cookiecutter.app_name }}"
-COPY ["{{ cookiecutter.app_name }}", "${APPROOT}"]
-COPY ["requirements.txt", "${APPROOT}"]
+WORKDIR /usr/local/src/
+COPY . /usr/local/src/
+RUN ["pip", "install", "/usr/local/src"]
 
-WORKDIR $APPROOT
-
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-
-CMD ["{{ cookiecutter.app_name }}.py", "--help"]
+CMD ["/usr/local/bin/{{ cookiecutter.app_name }}", "--help"]
