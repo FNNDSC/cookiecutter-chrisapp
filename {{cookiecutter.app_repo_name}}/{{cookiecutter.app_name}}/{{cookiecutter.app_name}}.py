@@ -11,9 +11,7 @@
 
 
 import os
-import sys
 import importlib.metadata
-sys.path.append(os.path.dirname(__file__))
 
 from chrisapp.base import ChrisApp
 
