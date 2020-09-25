@@ -91,8 +91,8 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     {{ cookiecutter.app_description }}.
     """
     AUTHORS                 = '{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>'
-    SELFPATH                = os.path.dirname(os.path.abspath(__file__))
-    SELFEXEC                = os.path.basename(__file__)
+    SELFPATH                = '/usr/local/bin'
+    SELFEXEC                = '{{ cookiecutter.app_name }}'
     EXECSHELL               = 'python'
     TITLE                   = '{{ cookiecutter.app_title }}'
     CATEGORY                = '{{ cookiecutter.app_category }}'
