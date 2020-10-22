@@ -1,4 +1,4 @@
-from .{{ cookiecutter.app_name }} import {{ cookiecutter.app_python_class_name }}
+from {{ cookiecutter.app_name }}.{{ cookiecutter.app_name }} import {{ cookiecutter.app_python_class_name }}
 
 
 def main():
