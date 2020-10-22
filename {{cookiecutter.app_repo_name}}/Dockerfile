@@ -21,13 +21,12 @@
 #   docker run -ti -e HOST_IP=$(ip route | grep -v docker | awk '{if(NF==11) print $9}') --entrypoint /bin/bash local/{{ cookiecutter.app_repo_name }}
 #
 
-
-
 FROM fnndsc/ubuntu-python3:latest
 MAINTAINER fnndsc "dev@babymri.org"
 
-WORKDIR /usr/local/src/
-COPY . /usr/local/src/
-RUN ["pip", "install", "/usr/local/src"]
+WORKDIR /usr/local/src
+COPY . .
+RUN ["pip", "--disable-pip-version-check", "install", "/usr/local/src"]
 
 CMD ["/usr/local/bin/{{ cookiecutter.app_name }}", "--help"]
+
