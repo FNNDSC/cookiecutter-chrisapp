@@ -28,5 +28,6 @@ WORKDIR /usr/local/src
 COPY . .
 RUN ["pip", "--disable-pip-version-check", "install", "/usr/local/src"]
 
-CMD ["/usr/local/bin/{{ cookiecutter.app_name }}", "--help"]
+WORKDIR /usr/local/bin
+CMD ["{{ cookiecutter.app_name }}", "--help"]
 
