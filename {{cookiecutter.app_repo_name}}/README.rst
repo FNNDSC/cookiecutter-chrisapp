@@ -27,16 +27,19 @@ Usage
 
 .. code::
 
-    python {{ cookiecutter.app_name }}.py                                         \\
-        [-h] [--help]                                               \\
-        [--json]                                                    \\
-        [--man]                                                     \\
-        [--meta]                                                    \\
-        [--savejson <DIR>]                                          \\
-        [-v <level>] [--verbosity <level>]                          \\
-        [--version]                                                 \\
-        <inputDir>                                                  \\
-        <outputDir>
+    python {{ cookiecutter.app_name }}.py
+        [-h|--help]
+        [--json] [--man] [--meta]
+        [--savejson <DIR>]
+        [-v|--verbosity <level>]
+        [--version]
+        <inputDir> <outputDir>
+
+
+Arguments
+~~~~~~~~~
+
+.. code::
 
     [-h] [--help]
     If specified, show help message and exit.
@@ -69,7 +72,7 @@ Getting inline help is:
 Run
 ~~~
 
-To actually run the program, you need you need to specify input and output directories using the `-v` flag to `docker run`.
+You need you need to specify input and output directories using the `-v` flag to `docker run`.
 
 
 .. code:: bash
