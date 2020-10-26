@@ -1,14 +1,11 @@
 {{ cookiecutter.app_repo_name }}
 ================================
 
-.. image:: https://badge.fury.io/py/{{ cookiecutter.app_name }}.svg
-    :target: https://badge.fury.io/py/{{ cookiecutter.app_name }}
-
 .. image:: https://travis-ci.org/FNNDSC/{{ cookiecutter.app_name }}.svg?branch=master
     :target: https://travis-ci.org/FNNDSC/{{ cookiecutter.app_name }}
 
-.. image:: https://img.shields.io/badge/python-3.5%2B-blue.svg
-    :target: https://badge.fury.io/py/pl-{{ cookiecutter.app_name }}
+.. image:: https://img.shields.io/badge/python-3.8%2B-blue.svg
+    :target: https://github.com/FNNDSC/{{ cookiecutter.app_repo_name }}/blob/master/setup.py
 
 .. contents:: Table of Contents
 
@@ -19,95 +16,105 @@ Abstract
 {{ cookiecutter.app_description }}
 
 
-Synopsis
---------
-
-.. code::
-
-    python {{ cookiecutter.app_name }}.py                                           \
-        [-v <level>] [--verbosity <level>]                          \
-        [--version]                                                 \
-        [--man]                                                     \
-        [--meta]                                                    \
-        <inputDir>
-        <outputDir> 
-
 Description
 -----------
 
-``{{ cookiecutter.app_name }}.py`` is a ChRIS-based application that...
+``{{ cookiecutter.app_name }}`` is a ChRIS-based application that...
 
-Arguments
----------
+
+Usage
+-----
 
 .. code::
 
-    [-v <level>] [--verbosity <level>]
-    Verbosity level for app. Not used currently.
+    python {{ cookiecutter.app_name }}.py
+        [-h|--help]
+        [--json] [--man] [--meta]
+        [--savejson <DIR>]
+        [-v|--verbosity <level>]
+        [--version]
+        <inputDir> <outputDir>
 
-    [--version]
-    If specified, print version number. 
+
+Arguments
+~~~~~~~~~
+
+.. code::
+
+    [-h] [--help]
+    If specified, show help message and exit.
+    
+    [--json]
+    If specified, show json representation of app and exit.
     
     [--man]
-    If specified, print (this) man page.
+    If specified, print (this) man page and exit.
 
     [--meta]
-    If specified, print plugin meta data.
+    If specified, print plugin meta data and exit.
+    
+    [--savejson <DIR>] 
+    If specified, save json representation file to DIR and exit. 
+    
+    [-v <level>] [--verbosity <level>]
+    Verbosity level for app. Not used currently.
+    
+    [--version]
+    If specified, print version number and exit. 
 
+
+Getting inline help is:
+
+.. code:: bash
+
+    docker run --rm fnndsc/{{ cookiecutter.app_repo_name }} {{ cookiecutter.app_name }} --man
 
 Run
-----
+~~~
 
-This ``plugin`` can be run in two modes: natively as a python package or as a containerized docker image.
+You need you need to specify input and output directories using the `-v` flag to `docker run`.
 
-Using PyPI
-~~~~~~~~~~
-
-To run from PyPI, simply do a 
 
 .. code:: bash
 
-    pip install {{ cookiecutter.app_name }}
-
-and run with
-
-.. code:: bash
-
-    {{ cookiecutter.app_name }}.py --man /tmp /tmp
-
-to get inline help. The app should also understand being called with only two positional arguments
-
-.. code:: bash
-
-    {{ cookiecutter.app_name }}.py /some/input/directory /destination/directory
+    docker run --rm -u $(id -u)                             \
+        -v $(pwd)/in:/incoming -v $(pwd)/out:/outgoing      \
+        fnndsc/{{ cookiecutter.app_repo_name }} {{ cookiecutter.app_name }}                        \
+        /incoming /outgoing
 
 
-Using ``docker run``
-~~~~~~~~~~~~~~~~~~~~
+Development
+-----------
 
-To run using ``docker``, be sure to assign an "input" directory to ``/incoming`` and an output directory to ``/outgoing``. *Make sure that the* ``$(pwd)/out`` *directory is world writable!*
-
-Now, prefix all calls with 
+Build the Docker container:
 
 .. code:: bash
 
-    docker run --rm -v $(pwd)/out:/outgoing                             \
-            fnndsc/pl-{{ cookiecutter.app_name }} {{ cookiecutter.app_name }}.py                        \
+    docker build -t local/{{ cookiecutter.app_repo_name }} .
 
-Thus, getting inline help is:
+
+Python dependencies can be added to ``setup.py``.
+After a successful build, track which dependencies you have installed by
+generating the `requirements.txt` file.
 
 .. code:: bash
 
-    mkdir in out && chmod 777 out
-    docker run --rm -v $(pwd)/in:/incoming -v $(pwd)/out:/outgoing      \
-            fnndsc/pl-{{ cookiecutter.app_name }} {{ cookiecutter.app_name }}.py                        \
-            --man                                                       \
-            /incoming /outgoing
+    docker run --rm local/{{ cookiecutter.app_repo_name }} -m pip freeze > requirements.txt
+
+
+For the sake of reproducible builds, be sure that ``requirements.txt`` is up to date before you publish your code.
+
+
+.. code:: bash
+
+    git add requirements.txt && git commit -m "Bump requirements.txt" && git push
+
 
 Examples
 --------
 
+Put some examples here!
 
 
-
-
+.. image:: https://raw.githubusercontent.com/FNNDSC/cookiecutter-chrisapp/master/doc/assets/badge/light.png
+    :target: https://chrisstore.co
