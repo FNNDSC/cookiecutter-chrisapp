@@ -52,9 +52,10 @@ where necessary.)
 
         * Bare bones execution
 
-            mkdir in out && chmod 777 out
-            python {{ cookiecutter.app_name }}.py   \\
-                                in    out
+            docker run --rm -u $(id -u)                             \
+                -v $(pwd)/in:/incoming -v $(pwd)/out:/outgoing      \
+                fnndsc/{{ cookiecutter.app_repo_name }} {{ cookiecutter.app_name }}                        \
+                /incoming /outgoing
 
     DESCRIPTION
 
@@ -82,13 +83,12 @@ where necessary.)
         
         [--version]
         If specified, print version number and exit. 
-
 """
 
 
 class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     """
-    {{ cookiecutter.app_description }}.
+    {{ cookiecutter.app_description }}
     """
     AUTHORS                 = '{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>'
     SELFPATH                = '/usr/local/bin'
