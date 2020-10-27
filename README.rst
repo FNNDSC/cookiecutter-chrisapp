@@ -12,8 +12,8 @@ cookiecutter-chrisapp |Logo|
   :alt: Last Commit
   
 A cookiecutter template for ChRIS plugin apps.
-  
-  
+
+
 Abstract
 ========
 
@@ -37,7 +37,12 @@ Beginners should read our `Introduction to Docker`_ and learn how to set up a `P
 .. _Introduction to Docker: https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Introduction-to-Docker
 .. _Python virtual environment: https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Best-Practices#python-environments
 
-ChRIS apps are known as plugins. They can be thought of as data processing modules. Plugins are typically coded in Python (the app doesn't have to be Python, but non-Python plugins are most easily deployed to the ChRIS platform using our ``ChrisApp`` Python wrapper/entrypoint). In most cases ChRIS apps process data from an ``inputdir`` and save results in an ``outputdir``. Importantly, ChRIS apps, since they often run in remote environments, have *NO GUI USER INTERFACES*. All information pertinent to the plugin execution is supplied via command line arguments and/or data in the ``inputdir``.
+ChRIS apps are known as plugins. They can be thought of as data processing modules.
+Plugins are typically coded in Python (the app doesn't have to be Python, but non-Python
+plugins are most easily deployed to the ChRIS platform using our ``ChrisApp`` Python wrapper/entrypoint).
+In most cases ChRIS apps process data from an ``inputdir`` and save results in an ``outputdir``.
+Importantly, ChRIS apps, since they often run in remote environments, have *NO GUI USER INTERFACES*.
+All information pertinent to the plugin execution is supplied via command line arguments and/or data in the ``inputdir``.
 
 ::
 
@@ -102,16 +107,38 @@ Execution chains follow logically as linked list of an **FS** plugin followed by
 
 4. Push to Github and Dockerhub. For help, read the `Beginner's Guide on our wiki <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Beginner%27s-Guide>`_.
 
-Prepare for Release
-===================
+Release Checklist
+=================
 
 Refer to https://github.com/FNNDSC/pl-simplefsapp (a simple **fs** plugin) and https://github.com/FNNDSC/pl-simpledsapp (a simple **ds** plugin) as examples
 for guidance on getting started with your ChRIS plugin.
 
-1. Do local test runs. Instructions for Docker can be found on the `wiki <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Beginner's-Guide#local-docker-build>`_. Make sure dependency versions in ``requirements.txt`` and ``Dockerfile`` are correct.
+1. Do local test runs. Instructions for Docker can be found on the `wiki <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Beginner's-Guide#local-docker-build>`_.
 
-2. Bump the version number in the ``setup.py`` and the app source code.
+2. Make sure dependency versions in ``requirements.txt`` and ``Dockerfile`` are correct.
 
-3. Run the provided ``release.sh`` script with a version number for the release.
+3. Bump the version number in the ``setup.py``.
 
-4. Finally please consult the `wiki <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki>`_ to learn how to register your containerized plugin app to ChRIS and the ChRIS store.
+4. Finally please consult the `wiki <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki>`_ to learn how to register your app to ChRIS and the ChRIS store.
+
+Notes
+=====
+
+A closer look at ``Dockerfile``
+
+**Why is ``WORKDIR /usr/local/bin``**? The precedent is for a plugin to be run like
+
+.. code::
+
+    docker run fnndsc/pl-appname appname /in /out
+
+i.e., executable scripts are expected to be found in the working directory.
+Runtime settings are implied by ``Dockerfile``
+
+.. code::
+
+    docker run --entrypoint /usr/bin/python --workdir /usr/local/bin fnndsc/pl-appname appname /in /out
+
+Here, the file ``/usr/local/bin/appname`` was created by python *setuptools* during ``pip install .``.
+``--entrypoint /usr/bin/python`` (also denoted by the class attribute ``EXECSHELL`` in the ``ChrisApp``
+subclass) is implied by the base image ``fnndsc/ubuntu-python3``.
