@@ -26,7 +26,9 @@ MAINTAINER fnndsc "dev@babymri.org"
 
 WORKDIR /usr/local/src
 COPY . .
-RUN pip --disable-pip-version-check install -r requirements.txt && pip install .
+RUN pip --disable-pip-version-check install -r requirements.txt \
+    && pip --disable-pip-version-check install .
 
 WORKDIR /usr/local/bin
 CMD ["{{ cookiecutter.app_name }}", "--help"]
+
