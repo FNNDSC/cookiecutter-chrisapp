@@ -92,24 +92,6 @@ Build the Docker container:
 
     docker build -t local/{{ cookiecutter.app_repo_name }} .
 
-
-Python dependencies can be added to ``setup.py``.
-After a successful build, track which dependencies you have installed by
-generating the `requirements.txt` file.
-
-.. code:: bash
-
-    docker run --rm local/{{ cookiecutter.app_repo_name }} -m pip freeze > requirements.txt
-
-
-For the sake of reproducible builds, be sure that ``requirements.txt`` is up to date before you publish your code.
-
-
-.. code:: bash
-
-    git add requirements.txt && git commit -m "Bump requirements.txt" && git push
-
-
 Examples
 --------
 
