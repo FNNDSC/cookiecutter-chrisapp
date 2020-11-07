@@ -32,10 +32,9 @@ Before we begin, you should be familiar with these topics:
 * docker
 * python
 
-Beginners should read our `Introduction to Docker`_ and learn how to set up a `Python virtual environment`_.
+Beginners should read our `Introduction to Docker`.
 
 .. _Introduction to Docker: https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Introduction-to-Docker
-.. _Python virtual environment: https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Best-Practices#python-environments
 
 ChRIS apps are known as plugins. They can be thought of as data processing modules. Plugins are typically coded in Python (the app doesn't have to be Python, but Python plugins are most easily deployed to the ChRIS platform using our ``ChrisApp`` Python wrapper/entrypoint). In most cases ChRIS apps process data from an ``inputdir`` and save results in an ``outputdir``. Importantly, ChRIS apps, since they often run in remote environments, have *NO GUI USER INTERFACES*. All information pertinent to the plugin execution is supplied via command line arguments and/or data in the ``inputdir``.
 
@@ -48,8 +47,8 @@ ChRIS apps are known as plugins. They can be thought of as data processing modul
 Requirements
 ============
 
-* ``Python`` (version 3.5+) and ``pip`` (which is usually installed with Python)
-* Latest ``Docker`` (version 17.04.0+) if you want to test your plugin's docker image and containers in your local machine.
+* Python (version 3.8+) and pip (which is usually installed with Python)
+* Docker (version 17.04.0+)
 
 
 Quickstart
@@ -115,25 +114,3 @@ for guidance on getting started with your ChRIS plugin.
 3. Bump the version number in the ``setup.py``.
 
 4. Finally please consult the `wiki <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki>`_ to learn how to register your app to ChRIS and the ChRIS store.
-
-Notes
-=====
-
-A closer look at ``Dockerfile``
-
-**Why is ``WORKDIR /usr/local/bin``**? The precedent is for a plugin to be run like
-
-.. code::
-
-    docker run fnndsc/pl-appname appname /in /out
-
-i.e., executable scripts are expected to be found in the working directory.
-Runtime settings are implied by ``Dockerfile``
-
-.. code::
-
-    docker run --entrypoint /usr/bin/python --workdir /usr/local/bin fnndsc/pl-appname appname /in /out
-
-Here, the file ``/usr/local/bin/appname`` was created by python *setuptools* during ``pip install .``.
-``--entrypoint /usr/bin/python`` (also denoted by the class attribute ``EXECSHELL`` in the ``ChrisApp``
-subclass) is implied by the base image ``fnndsc/ubuntu-python3``.
