@@ -26,11 +26,11 @@ MAINTAINER fnndsc "dev@babymri.org"
 
 WORKDIR /usr/local/src
 COPY . .
-RUN pip --disable-pip-version-check install -r requirements.txt && pip install .
+RUN pip --disable-pip-version-check install -r requirements.txt \
+    && pip --disable-pip-version-check install .
 
 # the precedent is for a plugin to be run like
 # docker run --entrypoint /usr/bin/python fnndsc/pl-appname appname /in /out
 # executable scripts are expected to be found in the working directory
 WORKDIR /usr/local/bin
 CMD ["{{ cookiecutter.app_name }}", "--help"]
-
