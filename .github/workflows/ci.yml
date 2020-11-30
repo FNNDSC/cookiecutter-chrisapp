@@ -1,0 +1,24 @@
+# run everything just to make sure it works!
+
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          path: cookiecutter-chrisapp
+      - name: setup CUBE
+        uses: fnndsc/minimake@v1
+      - name: install cookiecutter
+        run: pip install cookiecutter
+      - name: test
+        run: ./cookiecutter-chrisapp/example.sh cookiecutter-chrisapp
