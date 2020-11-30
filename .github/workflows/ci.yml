@@ -19,6 +19,9 @@ jobs:
       - name: setup CUBE
         uses: fnndsc/minimake@v1
       - name: install cookiecutter
-        run: pip install cookiecutter
+        run: |
+          pip install cookiecutter
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
       - name: test
         run: ./cookiecutter-chrisapp/example.sh cookiecutter-chrisapp
