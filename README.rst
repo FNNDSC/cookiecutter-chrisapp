@@ -2,7 +2,7 @@
 cookiecutter-chrisapp |Logo| 
 ############################
 
-|License| |Last Commit|
+|License| |Last Commit| |CI|
 
 .. |Logo| image:: ../assets/logo_chris.png?raw=true
   :alt: ChRIS Logo
@@ -10,7 +10,9 @@ cookiecutter-chrisapp |Logo|
   :alt: License
 .. |Last Commit| image:: https://img.shields.io/github/last-commit/fnndsc/cookiecutter-chrisapp.svg
   :alt: Last Commit
-  
+.. |CI| image:: https://github.com/FNNDSC/cookiecutter-chrisapp/workflows/CI/badge.svg
+  :alt: Github Actions
+
 A cookiecutter template for ChRIS plugin apps.
 
 
