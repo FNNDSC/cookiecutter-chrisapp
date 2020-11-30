@@ -31,4 +31,3 @@ RUN pip --disable-pip-version-check install -r requirements.txt \
 
 WORKDIR /usr/local/bin
 CMD ["{{ cookiecutter.app_name }}", "--help"]
-

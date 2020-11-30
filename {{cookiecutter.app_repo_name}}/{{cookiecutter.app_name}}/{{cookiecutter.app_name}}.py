@@ -9,10 +9,6 @@
 #                        dev@babyMRI.org
 #
 
-
-import os
-import importlib.metadata
-
 from chrisapp.base import ChrisApp
 
 
@@ -90,18 +86,10 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     """
     {{ cookiecutter.app_description }}
     """
-    AUTHORS                 = '{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>'
-    SELFPATH                = '/usr/local/bin'
-    SELFEXEC                = '{{ cookiecutter.app_name }}'
-    EXECSHELL               = 'python'
-    TITLE                   = '{{ cookiecutter.app_title }}'
+    PACKAGE                 = __package__
     CATEGORY                = '{{ cookiecutter.app_category }}'
     TYPE                    = '{{ cookiecutter.app_type }}'
-    DESCRIPTION             = '{{ cookiecutter.app_description }}'
-    DOCUMENTATION           = '{{ cookiecutter.app_documentation }}'
-    VERSION                 = importlib.metadata.version(__package__)
     ICON                    = '' # url of an icon image
-    LICENSE                 = 'Opensource (MIT)'
     MAX_NUMBER_OF_WORKERS   = 1  # Override with integer value
     MIN_NUMBER_OF_WORKERS   = 1  # Override with integer value
     MAX_CPU_LIMIT           = '' # Override with millicore value as string, e.g. '2000m'
