@@ -43,5 +43,8 @@ Basic usage of this template requires the
     pip install -U cookiecutter
     cookiecutter https://github.com/FNNDSC/cookiecutter-chrisapp.git
 
+Please review our `best practices <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Best-Practices#versioning>`
+regarding publication of ChRIS plugins.
+
 Our `developer's guide <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Developer's-Guide>`
 contains more helpful tips for running and testing ChRIS apps.
