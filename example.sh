@@ -129,17 +129,17 @@ if [ "$run_status" != "finishedSuccessfully" ]; then
 fi
 
 files_url=$(echo $job | jq -r .files)
+files_data=$(curl -s "$files_url" -u 'chris:chris1234')
 
 # this is some dark magic to parse the cumbersome JSON response
 # and wrangle it into { fname, file_resource } mappings,
 # then choose the hard-coded filename created by our test plugin.
 
 file_resource=$(
-  curl -s "$files_url" -u 'chris:chris1234' \
-    | jq -r '.collection.items[] |
-      {fname: (.data | from_entries | .fname),
-      file_resource: (.links | map({key: .rel, value: .href}) | from_entries | .file_resource)}
-      | select(.fname | endswith("goodbye")) | .file_resource'
+  echo "$files_data" | jq -r '.collection.items[] |
+    {fname: (.data | from_entries | .fname),
+    file_resource: (.links | map({key: .rel, value: .href}) | from_entries | .file_resource)}
+    | select(.fname | endswith("goodbye")) | .file_resource'
 )
 
 curl -s "$file_resource" -u 'chris:chris1234' | grep -Fq 'it works'
