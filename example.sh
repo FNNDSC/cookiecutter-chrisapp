@@ -2,7 +2,7 @@
 # Use the template to create an example FS app, then run it locally.
 #
 # Preconditions:
-# - install cookiecutter, curl, jq
+# - install cookiecutter, curl, jq-1.6
 # - CUBE and ChRIS_store are running on :8000 and :8010 respectively
 #   with default user "chris:chris1234"
 # - CUBE's container has the name "chris"
