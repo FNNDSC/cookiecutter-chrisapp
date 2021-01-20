@@ -1,5 +1,34 @@
 #!/bin/bash -ex
-# use the template to create an example FS app, then run it locally
+# Use the template to create an example FS app, then run it locally.
+#
+# Preconditions:
+# - install cookiecutter, curl, jq-1.6
+# - CUBE and ChRIS_store are running on :8000 and :8010 respectively
+#   with default user "chris:chris1234"
+# - CUBE's container has the name "chris"
+#
+# To meet the ChRIS backend preconditions, see
+# https://github.com/FNNDSC/minimake
+# 
+# The example app is customized by appending text to the source code,
+# overriding define_parameters and run.
+# It should be run as
+#
+#     docker run --rm -v $PWD/out:/outgoing local/pl-cctest appname --give present /outgoing
+#
+# If successful, a file ./out/goodbye will be created containing the string
+#
+#     it works :o
+#
+# The example plugin is registered into CUBE with a random name.
+# Then we run it. Finally, we assert that it has "finishedSuccessfully"
+# and that it creates an output file as described above.
+#
+# The resulting example app is created in a temporary directory which
+# is removed if this script succeeds. Otherwise, check stdout.
+# Since naming is randomized, collisions should not be a problem
+# and this script can be run over and over again (or even in parallel)
+# against the same CUBE instance without needing to wipe it.
 
 repo="${1:-https://github.com/FNNDSC/cookiecutter-chrisapp.git}"
 
@@ -18,6 +47,31 @@ To describe pl-cctest, it does literally nothing
 https://github.com/FNNDSC/cookiecutter-chrisapp#readme
 1.0
 EOF
+
+# add functionality
+
+cat >> $folder/pl-cctest/appname/appname.py << EOF
+    def define_parameters(self):
+        self.add_argument('-g', '--give', 
+                          dest         = 'give', 
+                          type         = str, 
+                          optional     = False,
+                          help         = 'give me a "present"')
+        self.add_argument('-t', '--take', 
+                          dest         = 'take', 
+                          type         = str, 
+                          optional     = True,
+                          help         = 'please do not take anything',
+                          default      = 'nothing')
+
+    def run(self, options):
+        if options.give != 'present':
+            raise ValueError('please give me a "present" with --give present')
+        from os import path
+        with open(path.join(options.outputdir, 'goodbye'), 'w') as f:
+            f.write('it works :o')
+EOF
+
 
 # upload to ChRIS_store
 
@@ -46,7 +100,7 @@ feed=$(
     -u 'chris:chris1234' \
     -H 'Content-Type: application/vnd.collection+json' \
     -H 'Accept: application/json' \
-    --data '{"template":{"data":[]}}'
+    --data '{"template":{"data":[{"name": "give", "value": "present"}]}}'
 )
 job_url=$(echo $feed | jq -r .url)
 
@@ -74,6 +128,26 @@ if [ "$run_status" != "finishedSuccessfully" ]; then
   exit 1
 fi
 
+files_url=$(echo $job | jq -r .files)
+files_data=$(curl -s "$files_url" -u 'chris:chris1234')
+
+# this is some dark magic to parse the cumbersome JSON response
+# and wrangle it into { fname, file_resource } mappings,
+# then choose the hard-coded filename created by our test plugin.
+
+file_resource=$(
+  echo "$files_data" | jq -r '.collection.items[] |
+    {fname: (.data | from_entries | .fname),
+    file_resource: (.links | map({key: .rel, value: .href}) | from_entries | .file_resource)}
+    | select(.fname | endswith("goodbye")) | .file_resource'
+)
+
+curl -s "$file_resource" -u 'chris:chris1234' | grep -Fq 'it works'
+
 # clean up
 
-rm -rf $folder
+set +e
+cleanup_success=0
+rm -rf $folder                 || cleanup_success=2
+docker rmi -f local/pl-cctest  || cleanup_success=2
+exit $cleanup_success
