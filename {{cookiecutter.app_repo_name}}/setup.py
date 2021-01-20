@@ -13,7 +13,7 @@ setup(
     author_email     = '{{ cookiecutter.author_email }}',
     url              = '{{ cookiecutter.app_documentation }}',
     packages         = ['{{ cookiecutter.app_name }}'],
-    install_requires = ['chrisapp~=2.0.0'],
+    install_requires = ['chrisapp'],
     test_suite       = 'nose.collector',
     tests_require    = ['nose'],
     license          = 'MIT',
