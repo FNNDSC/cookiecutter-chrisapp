@@ -24,8 +24,7 @@ Before we begin, you should be familiar with these topics:
 * docker
 * python
 
-Seasoned developers can skip this section.
-Otherwise some reading is recommended:
+For new developers, we recommend the following reading (seasoned developers can skip this):
 
 * `What is a ChRIS plugin? <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/About-Plugins#what-is-a-chris-plugin>`
 * `Introduction to Docker <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Introduction-to-Docker>`
@@ -35,8 +34,7 @@ Getting Started
 
 https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Quickstart
 
-Basic usage of this template requires the
-`cookiecutter <https://github.com/cookiecutter/cookiecutter>` tool.
+Basic usage of this template requires the `cookiecutter <https://github.com/cookiecutter/cookiecutter>` tool.
 
 .. code::
 
@@ -46,5 +44,7 @@ Basic usage of this template requires the
 Please review our `best practices <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Best-Practices#versioning>`
 regarding publication of ChRIS plugins.
 
-Our `developer's guide <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Developer's-Guide>`
-contains more helpful tips for running and testing ChRIS apps.
+Running / Using Your New Plugin
+===============================
+
+Once you've developed your plugin, or if you are returning to it after making code updates, you might wonder "How do I run this?" Our `developer's guide <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Developer's-Guide>` contains more helpful tips for running and testing your ChRIS plugins.
