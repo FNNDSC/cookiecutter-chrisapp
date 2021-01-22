@@ -4,7 +4,7 @@
   "app_repo_name": "pl-app",
   "app_name": "{{ cookiecutter.app_repo_name.lower().replace('pl-', '', 1).replace(' ', '_').replace('-', '_') }}",
   "app_python_class_name": "{{ cookiecutter.app_name[0].upper() + cookiecutter.app_name[1:] }}",
-  "app_type": ["ds", "fs"],
+  "app_type": ["ds", "fs", "ts"],
   "app_title": "A ChRIS plugin app",
   "app_category": "",
   "app_description": "An app to ...",
