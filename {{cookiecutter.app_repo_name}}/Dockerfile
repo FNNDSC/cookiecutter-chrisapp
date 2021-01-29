@@ -25,9 +25,12 @@ FROM fnndsc/ubuntu-python3:latest
 MAINTAINER fnndsc "dev@babymri.org"
 
 WORKDIR /usr/local/src
+
+COPY requirements.txt .
+RUN ["pip", "--disable-pip-version-check", "install", "-r", "requirements.txt"]
+
 COPY . .
-RUN pip --disable-pip-version-check install -r requirements.txt \
-    && pip --disable-pip-version-check install .
+RUN ["pip", "--disable-pip-version-check", "install", "."]
 
 WORKDIR /usr/local/bin
 CMD ["{{ cookiecutter.app_name }}", "--help"]
