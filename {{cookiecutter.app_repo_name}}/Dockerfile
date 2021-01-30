@@ -22,7 +22,7 @@
 #
 
 FROM python:3.9.1-buster
-MAINTAINER fnndsc "dev@babymri.org"
+LABEL maintainer="{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>"
 
 WORKDIR /usr/local/src
 
