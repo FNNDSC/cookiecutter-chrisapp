@@ -30,7 +30,6 @@ jobs:
           # if build triggered by tag, use tag name
           tag="${git_tag:-latest}"
           echo "::set-output name=tag::$dock_image:$tag"
-
       - uses: actions/checkout@v2
 
       - uses: docker/setup-qemu-action@v1
@@ -58,3 +57,10 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 {% endraw %}
+        # name: Update DockerHub description
+        # uses: peter-evans/dockerhub-description@v2
+        # with:{% raw %}
+        #   username: ${{ secrets.DOCKERHUB_USERNAME }}
+        #   password: ${{ secrets.DOCKERHUB_PASSWORD }} {% endraw %}
+        #   short-description: {{ cookiecutter.app_title }}
+        #   readme-filepath: ./README.rst
