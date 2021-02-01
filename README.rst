@@ -44,7 +44,7 @@ Basic usage of this template requires the `cookiecutter <https://github.com/cook
 Please review our `best practices <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Best-Practices#versioning>`
 regarding publication of ChRIS plugins.
 
-Running / Using Your New Plugin
-===============================
+Running / Debugging / Using Your New Plugin
+===========================================
 
 Once you've developed your plugin, or if you are returning to it after making code updates, you might wonder "How do I run this?" Our `developer's guide <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Developer's-Guide>` contains more helpful tips for running and testing your ChRIS plugins.
