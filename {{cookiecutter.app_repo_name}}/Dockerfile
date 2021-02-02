@@ -27,10 +27,10 @@ LABEL maintainer="{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }
 WORKDIR /usr/local/src
 
 COPY requirements.txt .
-RUN ["pip", "install", "-r", "requirements.txt"]
+RUN pip install -r requirements.txt
 
 COPY . .
-RUN ["pip", "install", "."]
+RUN pip install .
 
 WORKDIR /usr/local/bin
 CMD ["{{ cookiecutter.app_name }}", "--help"]
