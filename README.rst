@@ -41,6 +41,9 @@ Basic usage of this template requires the `cookiecutter <https://github.com/cook
     pip install -U cookiecutter
     cookiecutter https://github.com/FNNDSC/cookiecutter-chrisapp.git
 
+What do the questions mean?
+https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/CookieCutter-Questions
+
 Please review our `best practices <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Best-Practices#versioning>`
 regarding publication of ChRIS plugins.
 

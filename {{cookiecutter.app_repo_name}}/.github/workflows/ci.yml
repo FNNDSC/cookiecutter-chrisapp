@@ -6,11 +6,8 @@
 # - tagged commits are built as fnndsc/{{ cookiecutter.app_repo_name }}:<tag>
 # - tagged commits are also uploaded to chrisstore.co
 #
-# In order to use this workflow, you must define the secrets
-#
-# - DOCKERHUB_USERNAME
-# - DOCKERHUB_PASSWORD
-# - CHRIS_STORE_USER
+# In order to use this workflow, see
+# https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Automatic-Builds#steps-to-enable
 
 name: ci
 
