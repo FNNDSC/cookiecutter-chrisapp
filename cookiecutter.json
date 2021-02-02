@@ -9,5 +9,6 @@
   "app_category": "",
   "app_description": "An app to ...",
   "app_documentation": "http://wiki",
-  "app_version": "0.1"
+  "app_version": "0.1",
+  "publish_from_github_actions": ["yes", "no"]
 }

@@ -46,6 +46,7 @@ Utility
 To describe pl-cctest, it does literally nothing
 https://github.com/FNNDSC/cookiecutter-chrisapp#readme
 1.0
+1
 EOF
 
 # add functionality
