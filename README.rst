@@ -44,7 +44,7 @@ Basic usage of this template requires the `cookiecutter <https://github.com/cook
 What do the questions mean?
 https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/CookieCutter-Questions
 
-Please review our `best practices <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Best-Practices#versioning>`
+Please review our `best practices <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Best-Practices>`
 regarding publication of ChRIS plugins.
 
 Running / Debugging / Using Your New Plugin
