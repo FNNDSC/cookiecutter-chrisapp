@@ -10,21 +10,28 @@
 #                                                                                           |_|   |_|    
 # thing
 
-from subprocess import check_output
+from subprocess import check_output, CalledProcessError
 
 service_url = 'http://route-figlet-faas.k-apps.osh.massopen.cloud/'
+
+
+class FigletPatchException(Exception):
+    pass
 
 try:
     # it's more likely that a user has curl installed on their system
     # (default on most Linux, Mac, apparently Windows too)
     # than something like requests
-    pretty_title = check_output(
-        [
-            'curl', '-s',
-            f'{service_url}?message=' + '{{ cookiecutter.app_name }}'
-        ],
-        timeout=5, encoding='utf8'
-    )
+    try:
+        pretty_title = check_output(
+            [
+                'curl', '-s',
+                f'{service_url}?message=' + '{{ cookiecutter.app_name }}'
+            ],
+            timeout=5, encoding='utf8'
+        )
+    except CalledProcessError as e:
+        raise FigletPatchException('curl unsuccessful')
 
     # chop off leading empty lines
     while True:
@@ -49,14 +56,14 @@ try:
             start_index = i
             break
     if start_index < 0:
-        raise Exception('Could not find location to insert title')
+        raise FigletPatchException('Could not find location to insert title')
 
     for i, line in enumerate(original_lines[start_index+1:]):
         if line.startswith('"""'):
             end_index = i + start_index + 1
             break
     if end_index < 0:
-        raise Exception('Could not find ending """')
+        raise FigletPatchException('Could not find ending """')
 
     # overwrite the file with patched content
     with open(filename, 'w') as f:
@@ -64,5 +71,5 @@ try:
         f.write(pretty_title + '\n')
         f.write(''.join(original_lines[end_index:]))
 
-except:
+except FigletPatchException as e:
     print('Could not automatically generate figlet title from web service.')
