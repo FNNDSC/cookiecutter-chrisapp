@@ -1,11 +1,15 @@
 {{ cookiecutter.app_repo_name }}
 ================================
 
-.. image:: https://travis-ci.org/FNNDSC/{{ cookiecutter.app_name }}.svg?branch=master
-    :target: https://travis-ci.org/FNNDSC/{{ cookiecutter.app_name }}
+.. image:: https://img.shields.io/docker/v/fnndsc/{{ cookiecutter.app_repo_name }}
+    :target: https://hub.docker.com/r/fnndsc/{{ cookiecutter.app_repo_name }}
 
-.. image:: https://img.shields.io/badge/python-3.8%2B-blue.svg
-    :target: https://github.com/FNNDSC/{{ cookiecutter.app_repo_name }}/blob/master/setup.py
+.. image:: https://img.shields.io/github/license/fnndsc/{{ cookiecutter.app_repo_name }}
+    :target: https://github.com/FNNDSC/{{ cookiecutter.app_repo_name }}/blob/master/LICENSE
+{% if cookiecutter.publish_from_github_actions == 'yes' %}
+.. image:: https://github.com/FNNDSC/{{ cookiecutter.app_repo_name }}/workflows/ci/badge.svg
+    :target: https://github.com/FNNDSC/{{ cookiecutter.app_repo_name }}/actions
+{% endif %}
 
 .. contents:: Table of Contents
 
@@ -91,6 +95,12 @@ Build the Docker container:
 .. code:: bash
 
     docker build -t local/{{ cookiecutter.app_repo_name }} .
+
+Run unit tests:
+
+.. code:: bash
+
+    docker run --rm local/{{ cookiecutter.app_repo_name }} nosetests
 
 Examples
 --------
