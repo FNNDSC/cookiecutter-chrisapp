@@ -2,7 +2,7 @@
 #
 # {{ cookiecutter.app_name }} {{ cookiecutter.app_type }} ChRIS plugin app
 #
-# (c) 2016-2020 Fetal-Neonatal Neuroimaging & Developmental Science Center
+# (c) {% now 'local', '%Y' %} Fetal-Neonatal Neuroimaging & Developmental Science Center
 #                   Boston Children's Hospital
 #
 #              http://childrenshospital.org/FNNDSC/
