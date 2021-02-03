@@ -11,11 +11,17 @@
 
 name: ci
 
-on: [push, pull_request, release]
+on:
+  push:
+    branches: [ master, main, trunk ]
+  pull_request:
+    branches: [ master, main, trunk ]
+  release:
+    types: [ created ]
 
 jobs:
   test:
-    # testing is disabled by default, delete the line below to enable tests
+    # testing is disabled by default, delete the line below to enable testing
     if: false
     runs-on: ubuntu-20.04
     steps:
