@@ -112,7 +112,7 @@ Having created a plugin scaffolding and possibly created/run it as a test, you a
 Automatic builds
 =================
 
-While optional, automatic builds are highly recommended. These can be setup so that whenever you `git push` changes to your source code, new container images will be automatically created for you and pushed to Dockerhub. These containers will be default be multi-arch.
+While optional, automatic builds are highly recommended. These can be setup so that whenever you `git push` changes to your source code, new container images will be automatically created for you and pushed to Dockerhub. These containers will by default be multi-arch.
 
 <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Automatic-Builds>
 
