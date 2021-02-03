@@ -15,6 +15,8 @@ on: [push, pull_request, release]
 
 jobs:
   test:
+    # testing is disabled by default, delete the line below to enable tests
+    if: false
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -30,7 +32,6 @@ jobs:
     # if: github.event_name == 'push' || github.event_name == 'release'
     if: false  # 2. and delete this line{% endif %}
     runs-on: ubuntu-20.04
-    needs: [test]
 
     # we want to both push the build to DockerHub, but also
     # keep a local copy so that we can run
