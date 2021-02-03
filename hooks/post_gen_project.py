@@ -34,7 +34,7 @@ try:
         raise FigletPatchException('curl unsuccessful')
 
     # chop off leading empty lines
-    while True:
+    for i in range(10):
         empty_position = pretty_title.index('\n') + 1
         if not pretty_title[:empty_position].lstrip():
             pretty_title = pretty_title[empty_position:]
