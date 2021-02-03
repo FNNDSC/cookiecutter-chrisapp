@@ -87,6 +87,7 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     {{ cookiecutter.app_description }}
     """
     PACKAGE                 = __package__
+    TITLE                   = '{{ cookiecutter.app_title }}'
     CATEGORY                = '{{ cookiecutter.app_category }}'
     TYPE                    = '{{ cookiecutter.app_type }}'
     ICON                    = '' # url of an icon image
