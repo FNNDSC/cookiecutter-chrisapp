@@ -1,6 +1,6 @@
 # run everything just to make sure it works!
 
-name: CI
+name: test
 
 on:
   push:
@@ -9,7 +9,18 @@ on:
     branches: [ master ]
 
 jobs:
+  validate-yaml:
+    name: Validate YAML
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install python dependencies
+        run: pip install cookiecutter pyyaml
+      - name: Validate YAML
+        run: python -m unittest tests/test_ghactionsyaml.py
+
   test:
+    name: E2E integration test
     runs-on: ubuntu-20.04
     steps:
       - name: checkout
@@ -24,4 +35,4 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: test
-        run: ./cookiecutter-chrisapp/example.sh cookiecutter-chrisapp
+        run: ./cookiecutter-chrisapp/tests/example.sh cookiecutter-chrisapp
