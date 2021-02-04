@@ -8,10 +8,13 @@ cookiecutter-chrisapp |Logo|
   :alt: ChRIS Logo
 .. |License| image:: https://img.shields.io/github/license/fnndsc/cookiecutter-chrisapp.svg
   :alt: License
+  :target: https://github.com/FNNDSC/cookiecutter-chrisapp/blob/master/LICENSE
 .. |Last Commit| image:: https://img.shields.io/github/last-commit/fnndsc/cookiecutter-chrisapp.svg
   :alt: Last Commit
-.. |CI| image:: https://github.com/FNNDSC/cookiecutter-chrisapp/workflows/CI/badge.svg
+  :target: https://github.com/FNNDSC/cookiecutter-chrisapp/commits
+.. |CI| image:: https://github.com/FNNDSC/cookiecutter-chrisapp/workflows/test/badge.svg
   :alt: Github Actions
+  :target: https://github.com/FNNDSC/cookiecutter-chrisapp/actions
 
 This repo provides a cookiecutter template for ChRIS plugin apps. Using this cookiecutter will allow you to *easily* create ChRIS plugins using a ``python`` template, with baked in support for easy containerization. Recommended additional steps guide you through setting up a github repo for your plugin, triggering automatic containerization of your plugin, and automatically publishing to ``dockerhub`` and a ``chrisstore``.
 
