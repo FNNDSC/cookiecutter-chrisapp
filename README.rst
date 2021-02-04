@@ -8,8 +8,10 @@ cookiecutter-chrisapp |Logo|
   :alt: ChRIS Logo
 .. |License| image:: https://img.shields.io/github/license/fnndsc/cookiecutter-chrisapp.svg
   :alt: License
+  :target: https://github.com/FNNDSC/cookiecutter-chrisapp/blob/master/LICENSE
 .. |Last Commit| image:: https://img.shields.io/github/last-commit/fnndsc/cookiecutter-chrisapp.svg
   :alt: Last Commit
+  :target: https://github.com/FNNDSC/cookiecutter-chrisapp/commits
 .. |CI| image:: https://github.com/FNNDSC/cookiecutter-chrisapp/workflows/test/badge.svg
   :alt: Github Actions
   :target: https://github.com/FNNDSC/cookiecutter-chrisapp/actions
