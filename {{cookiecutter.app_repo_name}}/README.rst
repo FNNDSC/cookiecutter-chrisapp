@@ -6,7 +6,7 @@
 
 .. image:: https://img.shields.io/github/license/fnndsc/{{ cookiecutter.app_repo_name }}
     :target: https://github.com/FNNDSC/{{ cookiecutter.app_repo_name }}/blob/master/LICENSE
-{% if cookiecutter.publish_from_github_actions == 'yes' %}
+{% if cookiecutter.publish_automatically == 'yes' %}
 .. image:: https://github.com/FNNDSC/{{ cookiecutter.app_repo_name }}/workflows/ci/badge.svg
     :target: https://github.com/FNNDSC/{{ cookiecutter.app_repo_name }}/actions
 {% endif %}
