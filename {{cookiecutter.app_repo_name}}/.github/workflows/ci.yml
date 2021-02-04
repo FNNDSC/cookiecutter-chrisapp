@@ -126,13 +126,12 @@ jobs:
           dock_image=${{ steps.determine.outputs.dock_image }}
           docker pull localhost:5000/$dock_image
           docker tag localhost:5000/$dock_image $dock_image
-          docker rmi localhost:5000/$dock_image
-          script=$(docker inspect --format '{{ (index .Config.Cmd 0) }}' $repo)
+          script=$(docker inspect --format '{{ (index .Config.Cmd 0) }}' $dock_image)
           descriptor_file=$(mktemp --suffix .json)
           docker run --rm $dock_image $script --json > $descriptor_file
           res=$(
             curl -s -u "${{ secrets.CHRIS_STORE_USER }}" "https://chrisstore.co/api/v1/plugins/" \
-              -F "name=$(sed 's/^.*\///' <<< $dock_image)" \
+              -F "name=$(sed 's/^.*\///' <<< $repo)" \
               -F "dock_image=$dock_image"  \
               -F "descriptor_file=@$descriptor_file" \
               -F "public_repo=https://github.com/${{ github.repository }}"
