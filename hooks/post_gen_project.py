@@ -12,7 +12,7 @@
 
 from subprocess import check_output, CalledProcessError
 
-service_url = 'http://route-figlet-faas.k-apps.osh.massopen.cloud/'
+service_url = 'https://figlet.chrisproject.org/'
 
 
 class FigletPatchException(Exception):
