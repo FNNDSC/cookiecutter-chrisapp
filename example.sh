@@ -45,8 +45,10 @@ A cool title for a cool test
 Utility
 To describe pl-cctest, it does literally nothing
 https://github.com/FNNDSC/cookiecutter-chrisapp#readme
-1.0
-1
+1.0.0
+2
+2
+linux/amd64,linux/ppc64le
 EOF
 
 # add functionality

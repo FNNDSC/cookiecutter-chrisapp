@@ -21,9 +21,9 @@ on:
     types: [ created ]
 
 jobs:
-  test:
-    # you can disable testing by uncommenting this line
-    # if: false
+  test:{% if cookiecutter.test_automatically == 'no' %}
+    # delete the line below to enable automatic testing
+    if: false{% endif %}
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -32,12 +32,12 @@ jobs:
       - name: nose tests
         run: docker run "${GITHUB_REPOSITORY,,}" nosetests
 
-  publish:{% if cookiecutter.publish_from_github_actions == 'yes' %}
+  publish:{% if cookiecutter.publish_automatically == 'yes' %}
     if: github.event_name == 'push' || github.event_name == 'release'{% else %}
     # to enable upload to DockerHub and chrisstore.co
-    # 1. uncomment the line below
-    # if: github.event_name == 'push' || github.event_name == 'release'
-    if: false  # 2. and delete this line{% endif %}
+    if: false  # 1. delete this line
+    # 2. and uncomment the line below
+    # if: github.event_name == 'push' || github.event_name == 'release'{% endif %}
     runs-on: ubuntu-20.04
 
     # we want to both push the build to DockerHub, but also
@@ -104,7 +104,7 @@ jobs:
           tags: |
             ${{ steps.determine.outputs.dock_image }}
             localhost:5000/${{ steps.determine.outputs.dock_image }}
-          platforms: linux/amd64,linux/ppc64le,linux/arm64
+          platforms: {% endraw %}{{ cookiecutter.platforms }}{% raw %}
           push: true
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
@@ -122,11 +122,12 @@ jobs:
       - name: Upload to ChRIS Store
         if: "!endsWith(steps.determine.outputs.dock_image, ':latest')"
         run: |
+          repo=${{ steps.determine.outputs.repo }}
           dock_image=${{ steps.determine.outputs.dock_image }}
           docker pull localhost:5000/$dock_image
           docker tag localhost:5000/$dock_image $dock_image
           docker rmi localhost:5000/$dock_image
-          script=$(docker inspect --format '{{ (index .Config.Cmd 0) }}' $dock_image)
+          script=$(docker inspect --format '{{ (index .Config.Cmd 0) }}' $repo)
           descriptor_file=$(mktemp --suffix .json)
           docker run --rm $dock_image $script --json > $descriptor_file
           res=$(
