@@ -64,12 +64,13 @@ jobs:
         env:
           git_tag: ${{ steps.git_info.outputs.tag }}
         run: |
-          dock_image="${GITHUB_REPOSITORY,,}"  # to lower case
+          repo="${GITHUB_REPOSITORY,,}"  # to lower case
           # if build triggered by tag, use tag name
           tag="${git_tag:-latest}"
-          dock_image=$dock_image:$tag
+          dock_image=$repo:$tag
           echo $dock_image
-          echo "::set-output name=tag::$dock_image"
+          echo "::set-output name=dock_image::$dock_image"
+          echo "::set-output name=repo::$repo"
 
       - uses: actions/checkout@v2
 
@@ -101,8 +102,8 @@ jobs:
           context: .
           file: ./Dockerfile
           tags: |
-            ${{ steps.determine.outputs.tag }}
-            localhost:5000/${{ steps.determine.outputs.tag }}
+            ${{ steps.determine.outputs.dock_image }}
+            localhost:5000/${{ steps.determine.outputs.dock_image }}
           platforms: linux/amd64,linux/ppc64le,linux/arm64
           push: true
           cache-from: type=local,src=/tmp/.buildx-cache
@@ -115,11 +116,12 @@ jobs:
           password: ${{secrets.DOCKERHUB_PASSWORD}}
           short-description: {% endraw %}"{{ cookiecutter.app_title }}"{% raw %}
           readme-filepath: ./README.rst
+          repository: ${{ steps.determine.outputs.repo }}
 
       - name: Upload to ChRIS Store
-        if: "!endsWith(steps.determine.outputs.tag, ':latest')"
+        if: "!endsWith(steps.determine.outputs.dock_image, ':latest')"
         run: |
-          dock_image=${{ steps.determine.outputs.tag }}
+          dock_image=${{ steps.determine.outputs.dock_image }}
           docker pull localhost:5000/$dock_image
           docker tag localhost:5000/$dock_image $dock_image
           docker rmi localhost:5000/$dock_image
