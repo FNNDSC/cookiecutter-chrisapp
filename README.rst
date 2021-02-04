@@ -120,6 +120,14 @@ Note that you need to do nothing more once you have setup automatic builds. Each
 
 Please review our `best practices <https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Best-Practices>` regarding publication of ChRIS plugins.
 
+Finally, the automatic build process is asynchronous from your perspective. Once you 
+
+.. code::
+
+    git push && git tag <someTag> && git push --tags
+    
+there will be no inidcation in your terminal that anything has happened other than the the `git` operations. In order to check on your builds, go to the `Actions` tab on the github page of your repo to monitor the state of the build process.
+
 CODE
 ====
 
