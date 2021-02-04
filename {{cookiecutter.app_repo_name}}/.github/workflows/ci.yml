@@ -111,6 +111,7 @@ jobs:
 
       - name: Update DockerHub description
         uses: peter-evans/dockerhub-description@v2
+        continue-on-error: true  # it is not crucial that this works
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{secrets.DOCKERHUB_PASSWORD}}
