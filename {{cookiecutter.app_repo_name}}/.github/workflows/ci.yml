@@ -122,11 +122,12 @@ jobs:
       - name: Upload to ChRIS Store
         if: "!endsWith(steps.determine.outputs.dock_image, ':latest')"
         run: |
+          repo=${{ steps.determine.outputs.repo }}
           dock_image=${{ steps.determine.outputs.dock_image }}
           docker pull localhost:5000/$dock_image
           docker tag localhost:5000/$dock_image $dock_image
           docker rmi localhost:5000/$dock_image
-          script=$(docker inspect --format '{{ (index .Config.Cmd 0) }}' $dock_image)
+          script=$(docker inspect --format '{{ (index .Config.Cmd 0) }}' $repo)
           descriptor_file=$(mktemp --suffix .json)
           docker run --rm $dock_image $script --json > $descriptor_file
           res=$(
