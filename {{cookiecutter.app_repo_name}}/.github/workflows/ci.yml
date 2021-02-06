@@ -141,7 +141,7 @@ jobs:
           repo=${{ steps.determine.outputs.repo }}
           dock_image=${{ steps.determine.outputs.dock_image }}
           descriptor_file=$(mktemp --suffix .json)
-          cat > $descriptor_file <<< "${{ steps.pluginmeta.outputs.json }}"
+          cat > $descriptor_file <<< '${{ steps.pluginmeta.outputs.json }}'
           res=$(
             curl -s -u "${{ secrets.CHRIS_STORE_USER }}" "https://chrisstore.co/api/v1/plugins/" \
               -F "name=$(sed 's/^.*\///' <<< $repo)" \
