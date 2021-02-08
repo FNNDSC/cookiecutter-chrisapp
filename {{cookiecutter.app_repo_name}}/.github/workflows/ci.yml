@@ -148,6 +148,7 @@ jobs:
               -F "public_repo=https://github.com/${{ github.repository }}"
           )
           success=$?
+          echo "::debug::$res"
           if [ "$success" = "0" ]; then
             href="$(jq -r '.collection.items[0].href' <<< "$res")"
             echo $href
