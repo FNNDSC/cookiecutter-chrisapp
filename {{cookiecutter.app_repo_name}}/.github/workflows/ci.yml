@@ -18,8 +18,6 @@ on:
     tags: [ '**' ]
   pull_request:
     branches: [ master, main, trunk ]
-  release:
-    types: [ created ]
 
 jobs:
   test:{% if cookiecutter.test_automatically == 'no' %}
