@@ -4,6 +4,7 @@ import pathlib
 from yaml import safe_load
 from tempfile import TemporaryDirectory
 from cookiecutter.main import cookiecutter
+from cookiecutter.exceptions import FailedHookException
 
 class TestCookiecutterChrisapp(unittest.TestCase):
     def setUp(self):
@@ -47,6 +48,17 @@ class TestCookiecutterChrisapp(unittest.TestCase):
         self.assertIn('test', result['jobs'])
         self.assertIn('if', result['jobs']['test'])
         self.assertEqual('false', str(result['jobs']['test']['if']).lower())
+
+    def test_platform_assertion(self):
+        user_input = {
+            'app_repo_name': 'pl-bad_platforms',
+            'platforms': '1'  # pretend user assumed question is multiple choice
+        }
+
+        with self.assertRaises(FailedHookException):
+            cookiecutter(self.location, no_input=True, extra_context=user_input)
+
+
 
 if __name__ == '__main__':
     unittest.main()
