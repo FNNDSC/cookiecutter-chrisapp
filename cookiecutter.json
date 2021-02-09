@@ -12,5 +12,9 @@
   "app_version": "0.1",
   "test_automatically": ["yes", "no"],
   "publish_automatically": ["yes", "no"],
-  "platforms": "linux/amd64,linux/ppc64le,linux/arm64"
+  "platforms": [
+    "linux/amd64",
+    "linux/amd64,linux/ppc64le",
+    "linux/amd64,linux/ppc64le,linux/arm64"
+  ]
 }
