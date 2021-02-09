@@ -1,0 +1,16 @@
+.git/
+.dockerignore
+Dockerfile
+
+*~
+*.DS_Store
+*.egg-info
+__pycache__
+docs/build
+.coverage
+htmlcov
+venv
+.docker
+
+.idea/
+.vscode/
