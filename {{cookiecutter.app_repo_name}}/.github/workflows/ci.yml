@@ -138,11 +138,13 @@ jobs:
         run: |
           repo=${{ steps.determine.outputs.repo }}
           dock_image=${{ steps.determine.outputs.dock_image }}
+          plname="$(sed 's/^.*\///' <<< $repo)" && echo "name=$plname"
           descriptor_file=$(mktemp --suffix .json)
           cat > $descriptor_file <<< '${{ steps.pluginmeta.outputs.json }}'
           res=$(
             curl -s -u "${{ secrets.CHRIS_STORE_USER }}" "https://chrisstore.co/api/v1/plugins/" \
-              -F "name=$(sed 's/^.*\///' <<< $repo)" \
+              -H 'Accept:application/vnd.collection+json' \
+              -F "name=$plname" \
               -F "dock_image=$dock_image"  \
               -F "descriptor_file=@$descriptor_file" \
               -F "public_repo=https://github.com/${{ github.repository }}"
