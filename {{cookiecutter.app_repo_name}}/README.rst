@@ -1,7 +1,7 @@
 {{ cookiecutter.app_repo_name }}
 ================================
 
-.. image:: https://img.shields.io/docker/v/fnndsc/{{ cookiecutter.app_repo_name }}
+.. image:: https://img.shields.io/docker/v/fnndsc/{{ cookiecutter.app_repo_name }}?sort=semver
     :target: https://hub.docker.com/r/fnndsc/{{ cookiecutter.app_repo_name }}
 
 .. image:: https://img.shields.io/github/license/fnndsc/{{ cookiecutter.app_repo_name }}
