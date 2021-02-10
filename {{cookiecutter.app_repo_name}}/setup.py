@@ -18,7 +18,7 @@ setup(
     tests_require    = ['nose'],
     license          = 'MIT',
     zip_safe         = False,
-    python_requires  = '>=3.8',
+    python_requires  = '>=3.6',
     entry_points     = {
         'console_scripts': [
             '{{ cookiecutter.app_name }} = {{ cookiecutter.app_name }}.__main__:main'
