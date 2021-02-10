@@ -48,7 +48,7 @@ https://github.com/FNNDSC/cookiecutter-chrisapp#readme
 1.0.0
 2
 2
-linux/amd64,linux/ppc64le
+3
 EOF
 
 # add functionality
