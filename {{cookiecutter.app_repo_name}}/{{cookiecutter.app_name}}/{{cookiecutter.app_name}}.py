@@ -1,4 +1,3 @@
-#!/usr/bin/env python                                            
 #
 # {{ cookiecutter.app_name }} {{ cookiecutter.app_type }} ChRIS plugin app
 #
