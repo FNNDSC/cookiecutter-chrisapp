@@ -76,7 +76,7 @@ Getting inline help is:
 Run
 ~~~
 
-You need you need to specify input and output directories using the `-v` flag to `docker run`.
+You need to specify input and output directories using the `-v` flag to `docker run`.
 
 
 .. code:: bash
