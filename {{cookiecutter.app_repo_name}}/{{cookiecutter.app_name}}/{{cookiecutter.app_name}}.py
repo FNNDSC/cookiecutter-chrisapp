@@ -11,7 +11,7 @@
 from chrisapp.base import ChrisApp
 
 
-Gstr_title = """
+Gstr_title = r"""
 
 Generate a title from 
 http://patorjk.com/software/taag/#p=display&f=Doom&t={{ cookiecutter.app_name }}
