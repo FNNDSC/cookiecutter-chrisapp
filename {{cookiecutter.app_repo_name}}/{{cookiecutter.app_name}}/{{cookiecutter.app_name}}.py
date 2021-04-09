@@ -11,7 +11,7 @@
 from chrisapp.base import ChrisApp
 
 
-Gstr_title = """
+Gstr_title = r"""
 
 Generate a title from 
 http://patorjk.com/software/taag/#p=display&f=Doom&t={{ cookiecutter.app_name }}
@@ -22,7 +22,7 @@ Gstr_synopsis = """
 
 (Edit this in-line help for app specifics. At a minimum, the 
 flags below are supported -- in the case of DS apps, both
-positional arguments <inputDir> and <outputDir>; for FS apps
+positional arguments <inputDir> and <outputDir>; for FS and TS apps
 only <outputDir> -- and similarly for <in> <out> directories
 where necessary.)
 
@@ -89,15 +89,13 @@ class {{ cookiecutter.app_python_class_name }}(ChrisApp):
     TITLE                   = '{{ cookiecutter.app_title }}'
     CATEGORY                = '{{ cookiecutter.app_category }}'
     TYPE                    = '{{ cookiecutter.app_type }}'
-    ICON                    = '' # url of an icon image
-    MAX_NUMBER_OF_WORKERS   = 1  # Override with integer value
-    MIN_NUMBER_OF_WORKERS   = 1  # Override with integer value
-    MAX_CPU_LIMIT           = '' # Override with millicore value as string, e.g. '2000m'
-    MIN_CPU_LIMIT           = '' # Override with millicore value as string, e.g. '2000m'
-    MAX_MEMORY_LIMIT        = '' # Override with string, e.g. '1Gi', '2000Mi'
-    MIN_MEMORY_LIMIT        = '' # Override with string, e.g. '1Gi', '2000Mi'
-    MIN_GPU_LIMIT           = 0  # Override with the minimum number of GPUs, as an integer, for your plugin
-    MAX_GPU_LIMIT           = 0  # Override with the maximum number of GPUs, as an integer, for your plugin
+    ICON                    = ''   # url of an icon image
+    MIN_NUMBER_OF_WORKERS   = 1    # Override with the minimum number of workers as int
+    MAX_NUMBER_OF_WORKERS   = 1    # Override with the maximum number of workers as int
+    MIN_CPU_LIMIT           = 1000 # Override with millicore value as int (1000 millicores == 1 CPU core)
+    MIN_MEMORY_LIMIT        = 200  # Override with memory MegaByte (MB) limit as int
+    MIN_GPU_LIMIT           = 0    # Override with the minimum number of GPUs as int
+    MAX_GPU_LIMIT           = 0    # Override with the maximum number of GPUs as int
 
     # Use this dictionary structure to provide key-value output descriptive information
     # that may be useful for the next downstream plugin. For example:
