@@ -140,7 +140,9 @@ jobs:
           dock_image=${{ steps.determine.outputs.dock_image }}
           plname="$(sed 's/^.*\///' <<< $repo)" && echo "name=$plname"
           descriptor_file=$(mktemp --suffix .json)
-          cat > $descriptor_file <<< '${{ steps.pluginmeta.outputs.json }}'
+          cat > $descriptor_file << ENDOFPLUGINJSONDESCRIPTION
+          ${{ steps.pluginmeta.outputs.json }}
+          ENDOFPLUGINJSONDESCRIPTION
           res=$(
             curl -s -u "${{ secrets.CHRIS_STORE_USER }}" "https://chrisstore.co/api/v1/plugins/" \
               -H 'Accept:application/vnd.collection+json' \
