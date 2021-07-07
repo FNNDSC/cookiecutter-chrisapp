@@ -52,7 +52,7 @@ try:
     start_index = -1
     end_index = -1
     for i, line in enumerate(original_lines):
-        if line.startswith('Gstr_title = """'):
+        if line.startswith('Gstr_title = r"""'):
             start_index = i
             break
     if start_index < 0:
