@@ -28,7 +28,7 @@ jobs:
         with:
           path: cookiecutter-chrisapp
       - name: setup CUBE
-        uses: fnndsc/minichris@v4.1
+        uses: FNNDSC/miniChRIS@v6
       - name: install cookiecutter
         run: |
           pip install cookiecutter
