@@ -28,11 +28,11 @@ where necessary.)
 
     NAME
 
-       {{ cookiecutter.app_name }}.py 
+       {{ cookiecutter.app_name }}
 
     SYNOPSIS
 
-        python {{ cookiecutter.app_name }}.py                                         \\
+        docker run --rm fnndsc/{{ cookiecutter.app_repo_name }} {{ cookiecutter.app_name }}                     \\
             [-h] [--help]                                               \\
             [--json]                                                    \\
             [--man]                                                     \\
@@ -54,7 +54,7 @@ where necessary.)
 
     DESCRIPTION
 
-        `{{ cookiecutter.app_name }}.py` ...
+        `{{ cookiecutter.app_name }}` ...
 
     ARGS
 

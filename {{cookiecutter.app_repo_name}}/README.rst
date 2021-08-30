@@ -37,7 +37,7 @@ Usage
 
 .. code::
 
-    python {{ cookiecutter.app_name }}.py
+    docker run --rm fnndsc/{{ cookiecutter.app_repo_name }} {{ cookiecutter.app_name }}
         [-h|--help]
         [--json] [--man] [--meta]
         [--savejson <DIR>]
