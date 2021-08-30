@@ -23,8 +23,14 @@ Abstract
 Description
 -----------
 
-``{{ cookiecutter.app_name }}`` is a ChRIS-based application that...
-
+{% if cookiecutter.app_type == 'ds' %}
+``{{ cookiecutter.app_name }}`` is a *ChRIS ds-type* application that takes in ... as ... files
+and produces ...
+{% elif cookiecutter.app_type == 'fs' %}
+``{{ cookiecutter.app_name }}`` is a *ChRIS fs-type* application that produces ... by ...
+{% elif cookiecutter.app_type == 'ts' %}
+``{{ cookiecutter.app_name }}`` is a *ChRIS ts-type* application that...
+{% endif %}
 
 Usage
 -----
