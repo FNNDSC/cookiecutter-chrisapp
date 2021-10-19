@@ -94,6 +94,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1 
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push
         uses: docker/build-push-action@v2
@@ -104,6 +111,7 @@ jobs:
           tags: |
             ${{ steps.determine.outputs.dock_image }}
             localhost:5000/${{ steps.determine.outputs.dock_image }}
+            ghcr.io/${{ steps.determine.outputs.dock_image }}
           platforms: {% endraw %}{{ cookiecutter.platforms }}{% raw %}
           push: true
           cache-from: type=local,src=/tmp/.buildx-cache
