@@ -1,3 +1,16 @@
+####
+New!
+####
+
+If you're creating a *ChRIS* plugin wrapper for an existing Python program, read:
+`HOW TO: Convert an existing Python app <https://github.com/FNNDSC/chris_plugin/wiki/HOW-TO:-Convert-an-existing-Python-app>`_.
+
+If you're trying to create a new program or a *ChRIS* plugin wrapper for a non-Python program,
+try using https://github.com/FNNDSC/python-chrisapp-template
+
+This repository, ``cookiecutter-chrisapp``, describes an older method for how to create *ChRIS* plugins.
+It works and remains for historical purposes.
+
 ############################
 cookiecutter-chrisapp |Logo| 
 ############################
