@@ -2,8 +2,8 @@
 # https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Automatic-Builds
 #
 # - targeted platforms: x86_64, PowerPC64, ARM64
-# - master is built as fnndsc/{{ cookiecutter.app_repo_name }}:latest
-# - tagged commits are built as fnndsc/{{ cookiecutter.app_repo_name }}:<tag>
+# - master is built as fnndsc/pl-markimg:latest
+# - tagged commits are built as fnndsc/pl-markimg:<tag>
 # - tagged commits are also uploaded to chrisstore.co
 #
 # In order to use this workflow, see
@@ -20,10 +20,9 @@ on:
     branches: [ master, main, trunk ]
 
 jobs:
-  test:{% if cookiecutter.test_automatically == 'no' %}
-    # delete the line below to enable automatic testing
-    if: false{% endif %}
-    runs-on: ubuntu-20.04
+  test: {% if cookiecutter.test_automatically == 'no' %}
+    if: false
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v2
       - name: build
@@ -31,14 +30,10 @@ jobs:
       - name: nose tests
         run: docker run "${GITHUB_REPOSITORY,,}" nosetests
 
-  publish:{% if cookiecutter.publish_automatically == 'yes' %}
-    if: github.event_name == 'push' || github.event_name == 'release'{% else %}
-    # to enable upload to DockerHub and chrisstore.co
-    if: false  # 1. delete this line
-    # 2. and uncomment the line below
-    # if: github.event_name == 'push' || github.event_name == 'release'{% endif %}
-    runs-on: ubuntu-20.04
-
+  publish: {% if cookiecutter.publish_automatically == 'yes' %}
+    if: github.event_name == 'push' || github.event_name == 'release'
+    runs-on: ubuntu-24.04
+{%raw %}
     # we want to both push the build to DockerHub, but also
     # keep a local copy so that we can run
     #
@@ -52,7 +47,7 @@ jobs:
         image: registry:2
         ports:
           - 5000:5000
-{%raw %}
+
     steps:
       - name: Get git tag
         id: git_info
@@ -94,9 +89,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          
+
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1 
+        uses: docker/login-action@v1
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -122,14 +117,20 @@ jobs:
         run: |
           repo=${{ steps.determine.outputs.repo }}
           dock_image=${{ steps.determine.outputs.dock_image }}
+          plname="$(sed 's/^.*\///' <<< $GITHUB_REPOSITORY)" && echo "name=$plname"
           docker pull localhost:5000/$dock_image
           docker tag localhost:5000/$dock_image $dock_image
           script=$(docker inspect --format '{{ (index .Config.Cmd 0) }}' $dock_image)
+          docker run --rm $dock_image $script --json \
+            | jq '. += {"name":"'$plname'", "dock_image": "'$dock_image'", "public_repo": "'${{ github.server_url }}/${{ github.repository }}'" }' \
+            > /tmp/description.json
           json="$(docker run --rm $dock_image $script --json)"
-          jq <<< "$json"  # pretty print in log
+          # Escape single quotes
+          json_escaped=$(echo "$json" | sed "s/'/\\'/g")
 
-          echo "::set-output name=json::$json"
-          echo "::set-output name=title::$(jq -r '.title' <<< "$json")"
+          jq <<< "$json"  # pretty print in log
+          echo "json=$json_escaped" >> $GITHUB_OUTPUT
+          echo "title=$(jq -r '.title' <<< "$json")" >> $GITHUB_OUTPUT
 
       - name: Update DockerHub description
         uses: peter-evans/dockerhub-description@v2
@@ -141,32 +142,14 @@ jobs:
           readme-filepath: ./README.rst
           repository: ${{ steps.determine.outputs.repo }}
 
-      - name: Upload to ChRIS Store
-        if: "!endsWith(steps.determine.outputs.dock_image, ':latest')"
-        run: |
-          dock_image=${{ steps.determine.outputs.dock_image }}
-          plname="$(sed 's/^.*\///' <<< $GITHUB_REPOSITORY)" && echo "name=$plname"
-          descriptor_file=$(mktemp --suffix .json)
-          cat > $descriptor_file << ENDOFPLUGINJSONDESCRIPTION
-          ${{ steps.pluginmeta.outputs.json }}
-          ENDOFPLUGINJSONDESCRIPTION
-          res=$(
-            curl -s -u "${{ secrets.CHRIS_STORE_USER }}" "https://chrisstore.co/api/v1/plugins/" \
-              -H 'Accept:application/vnd.collection+json' \
-              -F "name=$plname" \
-              -F "dock_image=$dock_image"  \
-              -F "descriptor_file=@$descriptor_file" \
-              -F "public_repo=https://github.com/${{ github.repository }}"
-          )
-          success=$?
-          echo "::debug::$res"
-          if [ "$success" = "0" ]; then
-            href="$(jq -r '.collection.items[0].href' <<< "$res")"
-            echo $href
-            echo "::set-output name=pluginurl::$href"
-          else
-            echo "::error ::Failed upload to ChRIS Store"
-            echo "$res"
-            exit $success
-          fi
+      - name: Upload ChRIS Plugin
+        id: upload
+        if: github.ref_type == 'tag'
+        uses: FNNDSC/upload-chris-plugin@main
+        with:
+          description_file: /tmp/description.json
+          username: ${{ secrets.CHRISPROJECT_USERNAME }}
+          password: ${{ secrets.CHRISPROJECT_PASSWORD }}
+          chris_url: https://cube.chrisproject.org/api/v1/
+          compute_names: NERC
 {% endraw %}
