@@ -107,7 +107,7 @@ jobs:
             ${{ steps.determine.outputs.dock_image }}
             localhost:5000/${{ steps.determine.outputs.dock_image }}
             ghcr.io/${{ steps.determine.outputs.dock_image }}
-          platforms: {% endraw %}{{ cookiecutter.platforms }}{% raw %}
+          platforms: {{ cookiecutter.platforms }}
           push: true
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
