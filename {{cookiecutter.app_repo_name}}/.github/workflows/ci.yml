@@ -21,7 +21,7 @@ on:
 
 jobs:
   test: {% if cookiecutter.test_automatically == 'no' %}
-    if: false
+    if: false {% endif %}
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v2
@@ -31,9 +31,10 @@ jobs:
         run: docker run "${GITHUB_REPOSITORY,,}" nosetests
 
   publish: {% if cookiecutter.publish_automatically == 'yes' %}
-    if: github.event_name == 'push' || github.event_name == 'release'
+    if: github.event_name == 'push' || github.event_name == 'release'{% else %}
+    if: false  # 1. delete this line
     runs-on: ubuntu-24.04
-{%raw %}
+
     # we want to both push the build to DockerHub, but also
     # keep a local copy so that we can run
     #
@@ -47,7 +48,7 @@ jobs:
         image: registry:2
         ports:
           - 5000:5000
-
+{%raw %}
     steps:
       - name: Get git tag
         id: git_info
@@ -107,7 +108,7 @@ jobs:
             ${{ steps.determine.outputs.dock_image }}
             localhost:5000/${{ steps.determine.outputs.dock_image }}
             ghcr.io/${{ steps.determine.outputs.dock_image }}
-          platforms: {{ cookiecutter.platforms }}
+          platforms: {% endraw %}{{ cookiecutter.platforms }}{% raw %}
           push: true
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
